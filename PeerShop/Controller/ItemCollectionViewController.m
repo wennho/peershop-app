@@ -3,33 +3,56 @@
 //  PeerShop
 //
 //  Created by Wen Hao on 5/14/14.
-//  Copyright (c) 2014 Wen Hao. All rights reserved.
 //
+//  Adapted from Alexander Hsu's LittleFighters demo and Paul Hegarty's Shutterbug demo for CS193P
 
 #import "ItemCollectionViewController.h"
 #import "ItemCollectionViewCell.h"
 #import "ItemDetailViewController.h"
+#import "PeerShopInterface.h"
 
 @interface ItemCollectionViewController ()
 // Image names for thumbnails
-@property (strong, nonatomic) NSMutableArray *characterThumbnails; //NSString
+@property (strong, nonatomic) NSArray *items; //NSString
 @end
 
 @implementation ItemCollectionViewController
 
-// Lazy instantiation for names of thumbnails
-- (NSMutableArray *)characterThumbnails {
-    if (!_characterThumbnails) {
-        _characterThumbnails = [[NSMutableArray alloc] init];
-    }
-    return _characterThumbnails;
+-(void)setItems:(NSArray *)items
+{
+    _items = items;
+    [self.collectionView reloadData];
 }
+
+- (void) viewDidLoad
+{
+    [super viewDidLoad];
+    [self fetchItems];
+
+}
+
+- (IBAction) fetchItems
+{
+    NSURL *url = [PeerShopInterface URLforItemList];
+
+    dispatch_queue_t fetchQueue = dispatch_queue_create("peershop item fetch", NULL);
+    dispatch_async(fetchQueue, ^{
+        NSData *jsonResults = [NSData dataWithContentsOfURL:url];
+        NSArray *items = [NSJSONSerialization JSONObjectWithData:jsonResults
+                                                                            options:0
+                                                                              error:NULL];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.items = items;
+        });
+    });
+
+}
+
 
 #pragma mark - DataSource methods
 // REQUIRED: Number of items in section. (Number of thumbnails)
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-//    return self.characterThumbnails.count;
-    return 5;
+    return self.items.count;
 }
 
 // REQUIRED: Set up each cell
@@ -41,8 +64,7 @@
         myCell = [[ItemCollectionViewCell alloc] init];
 
     // IndexPath specifies the section and row of a cell. Here, row is equivalent to the index.
-    // Set the image of the cell.
-    myCell.imageView.image = [UIImage imageNamed:@"pencil"];
+    myCell.item = self.items[indexPath.row];
     return myCell;
 }
 
@@ -62,8 +84,8 @@
     if (indexPath && [destVC isKindOfClass:[ItemDetailViewController class]]) {
         if ([segue.identifier isEqualToString:@"Select Character"]) {
             ItemDetailViewController *detailVC = (ItemDetailViewController *)destVC;
-            detailVC.image = [UIImage imageNamed:self.characterThumbnails[indexPath.row]];
-            detailVC.itemTitle = self.characterThumbnails[indexPath.row];
+            detailVC.image = [UIImage imageNamed:self.items[indexPath.row]];
+            detailVC.itemTitle = self.items[indexPath.row];
         }
     }
 }

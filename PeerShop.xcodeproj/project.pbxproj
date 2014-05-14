@@ -23,6 +23,7 @@
 		3D45476319235E59007551D2 /* ItemCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D45476219235E59007551D2 /* ItemCollectionViewController.m */; };
 		3D45476619235F79007551D2 /* ItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D45476519235F79007551D2 /* ItemDetailViewController.m */; };
 		3D45476919236002007551D2 /* ItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D45476819236002007551D2 /* ItemCollectionViewCell.m */; };
+		3D45476C19236961007551D2 /* PeerShopInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D45476B19236961007551D2 /* PeerShopInterface.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,8 @@
 		3D45476519235F79007551D2 /* ItemDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemDetailViewController.m; path = Controller/ItemDetailViewController.m; sourceTree = "<group>"; };
 		3D45476719236002007551D2 /* ItemCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemCollectionViewCell.h; path = Controller/ItemCollectionViewCell.h; sourceTree = "<group>"; };
 		3D45476819236002007551D2 /* ItemCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemCollectionViewCell.m; path = Controller/ItemCollectionViewCell.m; sourceTree = "<group>"; };
+		3D45476A19236961007551D2 /* PeerShopInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeerShopInterface.h; sourceTree = "<group>"; };
+		3D45476B19236961007551D2 /* PeerShopInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeerShopInterface.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +124,8 @@
 				3D45476019235E16007551D2 /* Controller */,
 				3D45473D19234CA4007551D2 /* Main.storyboard */,
 				3D45474319234CA4007551D2 /* Images.xcassets */,
+				3D45476A19236961007551D2 /* PeerShopInterface.h */,
+				3D45476B19236961007551D2 /* PeerShopInterface.m */,
 				3D45473219234CA4007551D2 /* Supporting Files */,
 			);
 			path = PeerShop;
@@ -272,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D45476919236002007551D2 /* ItemCollectionViewCell.m in Sources */,
+				3D45476C19236961007551D2 /* PeerShopInterface.m in Sources */,
 				3D45476319235E59007551D2 /* ItemCollectionViewController.m in Sources */,
 				3D45473C19234CA4007551D2 /* PeerShopAppDelegate.m in Sources */,
 				3D45473819234CA4007551D2 /* main.m in Sources */,

@@ -10,4 +10,5 @@
 
 @interface ItemCollectionViewCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (strong, nonatomic) NSDictionary *item;
 @end
