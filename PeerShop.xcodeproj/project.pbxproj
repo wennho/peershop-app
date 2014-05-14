@@ -1,0 +1,472 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3D45472C19234CA4007551D2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D45472B19234CA4007551D2 /* Foundation.framework */; };
+		3D45472E19234CA4007551D2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D45472D19234CA4007551D2 /* CoreGraphics.framework */; };
+		3D45473019234CA4007551D2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D45472F19234CA4007551D2 /* UIKit.framework */; };
+		3D45473619234CA4007551D2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D45473419234CA4007551D2 /* InfoPlist.strings */; };
+		3D45473819234CA4007551D2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D45473719234CA4007551D2 /* main.m */; };
+		3D45473C19234CA4007551D2 /* PeerShopAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D45473B19234CA4007551D2 /* PeerShopAppDelegate.m */; };
+		3D45473F19234CA4007551D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D45473D19234CA4007551D2 /* Main.storyboard */; };
+		3D45474219234CA4007551D2 /* PeerShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D45474119234CA4007551D2 /* PeerShopViewController.m */; };
+		3D45474419234CA4007551D2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D45474319234CA4007551D2 /* Images.xcassets */; };
+		3D45474B19234CA4007551D2 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D45474A19234CA4007551D2 /* XCTest.framework */; };
+		3D45474C19234CA4007551D2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D45472B19234CA4007551D2 /* Foundation.framework */; };
+		3D45474D19234CA4007551D2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D45472F19234CA4007551D2 /* UIKit.framework */; };
+		3D45475519234CA4007551D2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D45475319234CA4007551D2 /* InfoPlist.strings */; };
+		3D45475719234CA4007551D2 /* PeerShopTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D45475619234CA4007551D2 /* PeerShopTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3D45474E19234CA4007551D2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3D45472019234CA4007551D2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3D45472719234CA4007551D2;
+			remoteInfo = PeerShop;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3D45472819234CA4007551D2 /* PeerShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PeerShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D45472B19234CA4007551D2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3D45472D19234CA4007551D2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		3D45472F19234CA4007551D2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		3D45473319234CA4007551D2 /* PeerShop-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PeerShop-Info.plist"; sourceTree = "<group>"; };
+		3D45473519234CA4007551D2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3D45473719234CA4007551D2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3D45473919234CA4007551D2 /* PeerShop-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PeerShop-Prefix.pch"; sourceTree = "<group>"; };
+		3D45473A19234CA4007551D2 /* PeerShopAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PeerShopAppDelegate.h; sourceTree = "<group>"; };
+		3D45473B19234CA4007551D2 /* PeerShopAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PeerShopAppDelegate.m; sourceTree = "<group>"; };
+		3D45473E19234CA4007551D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3D45474019234CA4007551D2 /* PeerShopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PeerShopViewController.h; sourceTree = "<group>"; };
+		3D45474119234CA4007551D2 /* PeerShopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PeerShopViewController.m; sourceTree = "<group>"; };
+		3D45474319234CA4007551D2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3D45474919234CA4007551D2 /* PeerShopTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PeerShopTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D45474A19234CA4007551D2 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		3D45475219234CA4007551D2 /* PeerShopTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PeerShopTests-Info.plist"; sourceTree = "<group>"; };
+		3D45475419234CA4007551D2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3D45475619234CA4007551D2 /* PeerShopTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PeerShopTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3D45472519234CA4007551D2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D45472E19234CA4007551D2 /* CoreGraphics.framework in Frameworks */,
+				3D45473019234CA4007551D2 /* UIKit.framework in Frameworks */,
+				3D45472C19234CA4007551D2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D45474619234CA4007551D2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D45474B19234CA4007551D2 /* XCTest.framework in Frameworks */,
+				3D45474D19234CA4007551D2 /* UIKit.framework in Frameworks */,
+				3D45474C19234CA4007551D2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3D45471F19234CA4007551D2 = {
+			isa = PBXGroup;
+			children = (
+				3D45473119234CA4007551D2 /* PeerShop */,
+				3D45475019234CA4007551D2 /* PeerShopTests */,
+				3D45472A19234CA4007551D2 /* Frameworks */,
+				3D45472919234CA4007551D2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3D45472919234CA4007551D2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3D45472819234CA4007551D2 /* PeerShop.app */,
+				3D45474919234CA4007551D2 /* PeerShopTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3D45472A19234CA4007551D2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3D45472B19234CA4007551D2 /* Foundation.framework */,
+				3D45472D19234CA4007551D2 /* CoreGraphics.framework */,
+				3D45472F19234CA4007551D2 /* UIKit.framework */,
+				3D45474A19234CA4007551D2 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3D45473119234CA4007551D2 /* PeerShop */ = {
+			isa = PBXGroup;
+			children = (
+				3D45473A19234CA4007551D2 /* PeerShopAppDelegate.h */,
+				3D45473B19234CA4007551D2 /* PeerShopAppDelegate.m */,
+				3D45473D19234CA4007551D2 /* Main.storyboard */,
+				3D45474019234CA4007551D2 /* PeerShopViewController.h */,
+				3D45474119234CA4007551D2 /* PeerShopViewController.m */,
+				3D45474319234CA4007551D2 /* Images.xcassets */,
+				3D45473219234CA4007551D2 /* Supporting Files */,
+			);
+			path = PeerShop;
+			sourceTree = "<group>";
+		};
+		3D45473219234CA4007551D2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3D45473319234CA4007551D2 /* PeerShop-Info.plist */,
+				3D45473419234CA4007551D2 /* InfoPlist.strings */,
+				3D45473719234CA4007551D2 /* main.m */,
+				3D45473919234CA4007551D2 /* PeerShop-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3D45475019234CA4007551D2 /* PeerShopTests */ = {
+			isa = PBXGroup;
+			children = (
+				3D45475619234CA4007551D2 /* PeerShopTests.m */,
+				3D45475119234CA4007551D2 /* Supporting Files */,
+			);
+			path = PeerShopTests;
+			sourceTree = "<group>";
+		};
+		3D45475119234CA4007551D2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3D45475219234CA4007551D2 /* PeerShopTests-Info.plist */,
+				3D45475319234CA4007551D2 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3D45472719234CA4007551D2 /* PeerShop */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3D45475A19234CA4007551D2 /* Build configuration list for PBXNativeTarget "PeerShop" */;
+			buildPhases = (
+				3D45472419234CA4007551D2 /* Sources */,
+				3D45472519234CA4007551D2 /* Frameworks */,
+				3D45472619234CA4007551D2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PeerShop;
+			productName = PeerShop;
+			productReference = 3D45472819234CA4007551D2 /* PeerShop.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3D45474819234CA4007551D2 /* PeerShopTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3D45475D19234CA4007551D2 /* Build configuration list for PBXNativeTarget "PeerShopTests" */;
+			buildPhases = (
+				3D45474519234CA4007551D2 /* Sources */,
+				3D45474619234CA4007551D2 /* Frameworks */,
+				3D45474719234CA4007551D2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3D45474F19234CA4007551D2 /* PBXTargetDependency */,
+			);
+			name = PeerShopTests;
+			productName = PeerShopTests;
+			productReference = 3D45474919234CA4007551D2 /* PeerShopTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3D45472019234CA4007551D2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = PeerShop;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Wen Hao";
+				TargetAttributes = {
+					3D45474819234CA4007551D2 = {
+						TestTargetID = 3D45472719234CA4007551D2;
+					};
+				};
+			};
+			buildConfigurationList = 3D45472319234CA4007551D2 /* Build configuration list for PBXProject "PeerShop" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3D45471F19234CA4007551D2;
+			productRefGroup = 3D45472919234CA4007551D2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3D45472719234CA4007551D2 /* PeerShop */,
+				3D45474819234CA4007551D2 /* PeerShopTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3D45472619234CA4007551D2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D45474419234CA4007551D2 /* Images.xcassets in Resources */,
+				3D45473619234CA4007551D2 /* InfoPlist.strings in Resources */,
+				3D45473F19234CA4007551D2 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D45474719234CA4007551D2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D45475519234CA4007551D2 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3D45472419234CA4007551D2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D45474219234CA4007551D2 /* PeerShopViewController.m in Sources */,
+				3D45473C19234CA4007551D2 /* PeerShopAppDelegate.m in Sources */,
+				3D45473819234CA4007551D2 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D45474519234CA4007551D2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D45475719234CA4007551D2 /* PeerShopTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3D45474F19234CA4007551D2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3D45472719234CA4007551D2 /* PeerShop */;
+			targetProxy = 3D45474E19234CA4007551D2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3D45473419234CA4007551D2 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3D45473519234CA4007551D2 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		3D45473D19234CA4007551D2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3D45473E19234CA4007551D2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3D45475319234CA4007551D2 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3D45475419234CA4007551D2 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3D45475819234CA4007551D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		3D45475919234CA4007551D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3D45475B19234CA4007551D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PeerShop/PeerShop-Prefix.pch";
+				INFOPLIST_FILE = "PeerShop/PeerShop-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		3D45475C19234CA4007551D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PeerShop/PeerShop-Prefix.pch";
+				INFOPLIST_FILE = "PeerShop/PeerShop-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		3D45475E19234CA4007551D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PeerShop.app/PeerShop";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PeerShop/PeerShop-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "PeerShopTests/PeerShopTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		3D45475F19234CA4007551D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PeerShop.app/PeerShop";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PeerShop/PeerShop-Prefix.pch";
+				INFOPLIST_FILE = "PeerShopTests/PeerShopTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3D45472319234CA4007551D2 /* Build configuration list for PBXProject "PeerShop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D45475819234CA4007551D2 /* Debug */,
+				3D45475919234CA4007551D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3D45475A19234CA4007551D2 /* Build configuration list for PBXNativeTarget "PeerShop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D45475B19234CA4007551D2 /* Debug */,
+				3D45475C19234CA4007551D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		3D45475D19234CA4007551D2 /* Build configuration list for PBXNativeTarget "PeerShopTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D45475E19234CA4007551D2 /* Debug */,
+				3D45475F19234CA4007551D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3D45472019234CA4007551D2 /* Project object */;
+}
