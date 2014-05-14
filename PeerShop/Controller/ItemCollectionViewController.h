@@ -3,8 +3,8 @@
 //  PeerShop
 //
 //  Created by Wen Hao on 5/14/14.
-//  Copyright (c) 2014 Wen Hao. All rights reserved.
 //
+//  Adapted from Alexander Hsu's LittleFighters demo and Paul Hegarty's Shutterbug demo for CS193P
 
 #import <UIKit/UIKit.h>
 

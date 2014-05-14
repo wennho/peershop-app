@@ -8,9 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ItemDetailViewController : UIViewController
-
-@property (strong, nonatomic) UIImage *image;
-@property (strong, nonatomic) NSString *itemTitle;
-
+@interface ItemDetailViewController : UITableViewController
+@property (strong, nonatomic) NSDictionary *item;
 @end

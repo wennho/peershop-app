@@ -31,6 +31,18 @@
 
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+    [super viewWillAppear:animated];
+}
+
+-(void) viewWillDisappear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [super viewWillDisappear:animated];
+}
+
 - (IBAction) fetchItems
 {
     NSURL *url = [PeerShopInterface URLforItemList];
@@ -39,8 +51,8 @@
     dispatch_async(fetchQueue, ^{
         NSData *jsonResults = [NSData dataWithContentsOfURL:url];
         NSArray *items = [NSJSONSerialization JSONObjectWithData:jsonResults
-                                                                            options:0
-                                                                              error:NULL];
+                                                         options:0
+                                                           error:NULL];
         dispatch_async(dispatch_get_main_queue(), ^{
             self.items = items;
         });
@@ -82,11 +94,8 @@
     // Set up destination view controller
     id destVC = segue.destinationViewController;
     if (indexPath && [destVC isKindOfClass:[ItemDetailViewController class]]) {
-        if ([segue.identifier isEqualToString:@"Select Character"]) {
-            ItemDetailViewController *detailVC = (ItemDetailViewController *)destVC;
-            detailVC.image = [UIImage imageNamed:self.items[indexPath.row]];
-            detailVC.itemTitle = self.items[indexPath.row];
-        }
+        ItemDetailViewController *detailVC = (ItemDetailViewController *)destVC;
+        detailVC.item = self.items[indexPath.row];
     }
 }
 
