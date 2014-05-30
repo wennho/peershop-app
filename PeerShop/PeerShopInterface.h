@@ -3,8 +3,6 @@
 //  PeerShop
 //
 //  Created by Wen Hao on 5/14/14.
-//
-// Adapted from Paul Hegarty's Shutterbug demo for CS193P
 
 #import <Foundation/Foundation.h>
 
@@ -21,4 +19,7 @@ typedef void (^CallbackBlock)(UIImage *img);
 + (NSURL *) ItemThumbnailURL:(NSDictionary *)item;
 + (NSURL *) ItemImageURL:(NSDictionary *)item;
 + (void) downloadThumbnail:(NSURL*)url withBlock:(CallbackBlock) callback;
+- (void) login;
++ (PeerShopInterface *) getSingleton;
+- (void)makeLoginRequest:(NSMutableURLRequest *)request;
 @end

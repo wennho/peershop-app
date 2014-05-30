@@ -18,13 +18,18 @@
 
 @implementation ItemCreationTVC
 
+- (void) viewDidLoad {
+    [super viewDidLoad];
+    [[PeerShopInterface getSingleton] makeLoginRequest:nil];
+}
+
 - (IBAction)create:(id)sender {
-    NSDictionary *itemDict =
-    @{
-      ITEM_TITLE_KEY: self.itemTitle.text,
-      ITEM_PRICE_KEY: self.itemPrice.text,
-      ITEM_DESCRIPTION_KEY: self.itemDescription.text,
-      };
+//    NSDictionary *itemDict =
+//    @{
+//      ITEM_TITLE_KEY: self.itemTitle.text,
+//      ITEM_PRICE_KEY: self.itemPrice.text,
+//      ITEM_DESCRIPTION_KEY: self.itemDescription.text,
+//      };
 }
 
 
