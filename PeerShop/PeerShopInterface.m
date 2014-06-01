@@ -10,7 +10,6 @@ typedef void (^CompletionBlock)(NSURL *location, NSURLResponse *response, NSErro
 
 @interface PeerShopInterface ()
 @property (nonatomic, strong) NSMutableData *responseData;
-@property (nonatomic, strong) NSHTTPCookie *csrfCookie;
 @property (nonatomic) BOOL loggedIn;
 @end
 
@@ -19,7 +18,7 @@ typedef void (^CompletionBlock)(NSURL *location, NSURLResponse *response, NSErro
 
 @implementation PeerShopInterface
 
-+ (NSString *) baseURL
++ (NSString *) baseURLString
 {
     //    return @"http://luiwenhao.com";
     return @"http://localhost:8000";
@@ -27,35 +26,40 @@ typedef void (^CompletionBlock)(NSURL *location, NSURLResponse *response, NSErro
 
 + (NSURL *) URLforItemList
 {
-    return [NSURL URLWithString:[[self baseURL] stringByAppendingString:@"/peerShop/app/item/"]];
+    return [NSURL URLWithString:[[self baseURLString] stringByAppendingString:@"/peerShop/app/item/"]];
 }
 
 + (NSURL *) itemThumbnailURL:(NSDictionary *)item
 {
-    return [NSURL URLWithString:[[self baseURL] stringByAppendingString:[item valueForKey:@"thumbnailUrl"]]];
+    return [NSURL URLWithString:[[self baseURLString] stringByAppendingString:[item valueForKey:@"thumbnailUrl"]]];
 }
 
 
 + (NSURL *) itemImageURL:(NSDictionary *)item
 {
-    return [NSURL URLWithString:[[self baseURL] stringByAppendingString:[item valueForKey:@"imageUrl"]]];
+    return [NSURL URLWithString:[[self baseURLString] stringByAppendingString:[item valueForKey:@"imageUrl"]]];
 }
 
 + (NSURL *) itemUploadURL
 {
-    return [NSURL URLWithString:[[self baseURL] stringByAppendingString:@"/upload/new/"]];
+    return [NSURL URLWithString:[[self baseURLString] stringByAppendingString:@"/upload/new/"]];
 }
 
 + (NSURL *) loginURL
 {
-    return [NSURL URLWithString:[[self baseURL]
+    return [NSURL URLWithString:[[self baseURLString]
                                  stringByAppendingString:@"/user/login/"]];
 }
 
 + (NSString *) getCSRF
 {
-    PeerShopInterface *me = [PeerShopInterface getSingleton];
-    return me.csrfCookie.value;
+    NSArray *cookies = [NSHTTPCookieStorage sharedHTTPCookieStorage].cookies;
+    for (NSHTTPCookie *cookie in cookies) {
+        if ([cookie.name isEqualToString:@"csrftoken"]){
+            return cookie.value;
+        }
+    }
+    return nil;
 }
 
 - (void)makeLoginRequest:(NSMutableURLRequest *)request {
@@ -66,7 +70,15 @@ typedef void (^CompletionBlock)(NSURL *location, NSURLResponse *response, NSErro
 
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *dataTask =  [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        [self receiveResponse:response];
+
+        if (self.loggedIn) {
+            // We're logged in and good to go
+
+        } else if (!self.loggedIn) {
+            self.loggedIn = YES;
+            [self loginWithCSRF];
+        }
+        
     }];
     [dataTask resume];
 
@@ -78,7 +90,7 @@ typedef void (^CompletionBlock)(NSURL *location, NSURLResponse *response, NSErro
 
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[PeerShopInterface loginURL]];
     [request setHTTPMethod:@"POST"];
-    NSString *authString = [NSString stringWithFormat:@"%@=%@&login=wenhao&password=mystery",CSRF_KEY ,self.csrfCookie.value, nil];
+    NSString *authString = [NSString stringWithFormat:@"%@=%@&login=wenhao&password=mystery",CSRF_KEY ,[PeerShopInterface getCSRF], nil];
     [request setHTTPBody:[authString dataUsingEncoding:NSUTF8StringEncoding]];
     [self makeLoginRequest:request];
 }
@@ -88,6 +100,7 @@ typedef void (^CompletionBlock)(NSURL *location, NSURLResponse *response, NSErro
     PeerShopInterface *me = [PeerShopInterface getSingleton];
     [me makeLoginRequest:nil];
 }
+
 
 
 + (void) downloadItemList: (void (^)(NSArray *itemList)) block
@@ -196,7 +209,6 @@ typedef void (^CompletionBlock)(NSURL *location, NSURLResponse *response, NSErro
     NSString *postLength = [NSString stringWithFormat:@"%d", [body length]];
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
 
-
     // create the session without specifying a queue to run completion handler on (thus, not main queue)
     // we also don't specify a delegate (since completion handler is all we need)
     NSURLSession *session = [NSURLSession sharedSession];
@@ -211,32 +223,6 @@ typedef void (^CompletionBlock)(NSURL *location, NSURLResponse *response, NSErro
 
 
 
-- (void) receiveResponse:(NSURLResponse *)response {
-
-    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-
-    if (self.loggedIn) {
-        // We're logged in and good to go
-        NSLog(@"Logged in");
-                NSArray *cookies = [NSHTTPCookie cookiesWithResponseHeaderFields:[httpResponse allHeaderFields] forURL:[PeerShopInterface loginURL]];
-        NSLog(@"%@", cookies);
-
-    } else if (!self.loggedIn) {
-        self.loggedIn = YES;
-        NSArray *cookies = [NSHTTPCookie cookiesWithResponseHeaderFields:[httpResponse allHeaderFields] forURL:[PeerShopInterface loginURL]];
-        for (NSHTTPCookie *cookie in cookies) {
-            if ([cookie.name isEqualToString:@"csrftoken"]) {
-                self.csrfCookie = cookie;
-                break;
-            }
-        }
-
-        [self loginWithCSRF];
-    }
-
-
-
-}
 
 
 
