@@ -9,14 +9,27 @@
 typedef void (^CompletionBlock)(NSURL *location, NSURLResponse *response, NSError *error);
 
 @interface PeerShopInterface ()
-@property (nonatomic, strong) NSMutableData *responseData;
 @property (nonatomic) BOOL loggedIn;
+@property (nonatomic, strong) NSString *username;
+@property (nonatomic, strong) NSString *password;
 @end
 
 #define BOUNDARY @"peershopboundary"
 #define CSRF_KEY @"csrfmiddlewaretoken"
 
 @implementation PeerShopInterface
+
++ (PeerShopInterface *) getSingleton
+{
+    static PeerShopInterface *singleton = nil;
+    if (!singleton) {
+        singleton  = [[PeerShopInterface alloc] init];
+    }
+    return singleton;
+}
+
+
+#pragma mark URLs
 
 + (NSString *) baseURLString
 {
@@ -51,6 +64,8 @@ typedef void (^CompletionBlock)(NSURL *location, NSURLResponse *response, NSErro
                                  stringByAppendingString:@"/user/login/"]];
 }
 
+#pragma mark Login
+
 + (NSString *) getCSRF
 {
     NSArray *cookies = [NSHTTPCookieStorage sharedHTTPCookieStorage].cookies;
@@ -62,46 +77,32 @@ typedef void (^CompletionBlock)(NSURL *location, NSURLResponse *response, NSErro
     return nil;
 }
 
-- (void)makeLoginRequest:(NSMutableURLRequest *)request {
-    if (request == nil) {
-        request = [NSMutableURLRequest requestWithURL:[PeerShopInterface loginURL]];
-        self.loggedIn = NO;
-    }
-
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *dataTask =  [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-
-        if (self.loggedIn) {
-            // We're logged in and good to go
-
-        } else if (!self.loggedIn) {
-            self.loggedIn = YES;
-            [self loginWithCSRF];
-        }
-        
-    }];
-    [dataTask resume];
-
-}
-
-
-- (void) loginWithCSRF
++ (void) loginWithCSRF
 {
 
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[PeerShopInterface loginURL]];
     [request setHTTPMethod:@"POST"];
     NSString *authString = [NSString stringWithFormat:@"%@=%@&login=wenhao&password=mystery",CSRF_KEY ,[PeerShopInterface getCSRF], nil];
     [request setHTTPBody:[authString dataUsingEncoding:NSUTF8StringEncoding]];
-    [self makeLoginRequest:request];
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask =  [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        // We're logged in and good to go
+    }];
+    [dataTask resume];
 }
 
 + (void) login
 {
-    PeerShopInterface *me = [PeerShopInterface getSingleton];
-    [me makeLoginRequest:nil];
+    // obtain CSRF, then login
+    NSURLRequest *request = [NSMutableURLRequest requestWithURL:[PeerShopInterface loginURL]];
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask =  [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        [PeerShopInterface loginWithCSRF];
+    }];
+    [dataTask resume];
 }
 
-
+#pragma mark Download/Upload
 
 + (void) downloadItemList: (void (^)(NSArray *itemList)) block
 {
@@ -141,10 +142,7 @@ typedef void (^CompletionBlock)(NSURL *location, NSURLResponse *response, NSErro
         }
     };
 
-    // create the session without specifying a queue to run completion handler on (thus, not main queue)
-    // we also don't specify a delegate (since completion handler is all we need)
     NSURLSession *session = [NSURLSession sharedSession];
-
 
     NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request
                                                     completionHandler:block];
@@ -152,14 +150,6 @@ typedef void (^CompletionBlock)(NSURL *location, NSURLResponse *response, NSErro
     
 }
 
-+ (PeerShopInterface *) getSingleton
-{
-    static PeerShopInterface *singleton = nil;
-    if (!singleton) {
-        singleton  = [[PeerShopInterface alloc] init];
-    }
-    return singleton;
-}
 
 
 + (void) uploadItem: (NSDictionary *) itemDict withImage:(UIImage *) image
@@ -209,14 +199,9 @@ typedef void (^CompletionBlock)(NSURL *location, NSURLResponse *response, NSErro
     NSString *postLength = [NSString stringWithFormat:@"%d", [body length]];
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
 
-    // create the session without specifying a queue to run completion handler on (thus, not main queue)
-    // we also don't specify a delegate (since completion handler is all we need)
+
     NSURLSession *session = [NSURLSession sharedSession];
-
-    NSURLSessionUploadTask *task = [session uploadTaskWithRequest:request fromData:body completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-
-
-    }];
+    NSURLSessionUploadTask *task = [session uploadTaskWithRequest:request fromData:body];
     [task resume];
 
 }

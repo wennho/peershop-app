@@ -24,6 +24,7 @@
 		3D45476619235F79007551D2 /* ItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D45476519235F79007551D2 /* ItemDetailViewController.m */; };
 		3D45476919236002007551D2 /* ItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D45476819236002007551D2 /* ItemCollectionViewCell.m */; };
 		3D45476C19236961007551D2 /* PeerShopInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D45476B19236961007551D2 /* PeerShopInterface.m */; };
+		3D634FF9193B4009007EFEB1 /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D634FF8193B4009007EFEB1 /* LoginVC.m */; };
 		3D776E86193555C9007EECC4 /* ItemCreationTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D776E85193555C9007EECC4 /* ItemCreationTVC.m */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,8 @@
 		3D45476819236002007551D2 /* ItemCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemCollectionViewCell.m; path = Controller/ItemCollectionViewCell.m; sourceTree = "<group>"; };
 		3D45476A19236961007551D2 /* PeerShopInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeerShopInterface.h; sourceTree = "<group>"; };
 		3D45476B19236961007551D2 /* PeerShopInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeerShopInterface.m; sourceTree = "<group>"; };
+		3D634FF7193B4009007EFEB1 /* LoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginVC.h; path = Controller/LoginVC.h; sourceTree = "<group>"; };
+		3D634FF8193B4009007EFEB1 /* LoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginVC.m; path = Controller/LoginVC.m; sourceTree = "<group>"; };
 		3D776E84193555C9007EECC4 /* ItemCreationTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemCreationTVC.h; path = Controller/ItemCreationTVC.h; sourceTree = "<group>"; };
 		3D776E85193555C9007EECC4 /* ItemCreationTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemCreationTVC.m; path = Controller/ItemCreationTVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -176,6 +179,8 @@
 				3D45476819236002007551D2 /* ItemCollectionViewCell.m */,
 				3D776E84193555C9007EECC4 /* ItemCreationTVC.h */,
 				3D776E85193555C9007EECC4 /* ItemCreationTVC.m */,
+				3D634FF7193B4009007EFEB1 /* LoginVC.h */,
+				3D634FF8193B4009007EFEB1 /* LoginVC.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -287,6 +292,7 @@
 				3D45473C19234CA4007551D2 /* PeerShopAppDelegate.m in Sources */,
 				3D45473819234CA4007551D2 /* main.m in Sources */,
 				3D776E86193555C9007EECC4 /* ItemCreationTVC.m in Sources */,
+				3D634FF9193B4009007EFEB1 /* LoginVC.m in Sources */,
 				3D45476619235F79007551D2 /* ItemDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

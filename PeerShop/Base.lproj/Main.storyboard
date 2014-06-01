@@ -11,7 +11,7 @@
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="8At-oD-oxq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.86888767680000001" green="0.92758715449999996" blue="0.94078842470000001" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection id="uIc-8m-Xfi">
                                 <cells>
@@ -36,6 +36,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="ch7-Bt-cei" secondAttribute="bottom" id="iV5-Dr-mE2"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.86888767680000001" green="0.92758715449999996" blue="0.94078842470000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="GeV-c7-HYF">
                                         <rect key="frame" x="0.0" y="108" width="320" height="44"/>
@@ -52,6 +53,7 @@
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.86888767680000001" green="0.92758715449999996" blue="0.94078842470000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="Wjo-kt-Xqu">
                                         <rect key="frame" x="0.0" y="152" width="320" height="100"/>
@@ -75,6 +77,7 @@
                                                 <constraint firstItem="bxO-RT-rBK" firstAttribute="top" secondItem="Ho8-xE-Szi" secondAttribute="top" id="rbe-9g-3Ge"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.86888767680000001" green="0.92758715449999996" blue="0.94078842470000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="hnl-DM-lZx">
                                         <rect key="frame" x="0.0" y="252" width="320" height="44"/>
@@ -107,6 +110,7 @@
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.86888767680000001" green="0.92758715449999996" blue="0.94078842470000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ImageCell" id="JaG-Bs-bVQ">
                                         <rect key="frame" x="0.0" y="296" width="320" height="44"/>
@@ -127,6 +131,7 @@
                                                 <constraint firstItem="XOn-au-IdF" firstAttribute="leading" secondItem="JOX-3m-HLv" secondAttribute="leading" id="pH2-ct-4C5"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.86888767680000001" green="0.92758715449999996" blue="0.94078842470000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -161,7 +166,7 @@
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="Z2m-xM-Cl9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.86888767680000001" green="0.92758715449999996" blue="0.94078842470000001" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="bLO-sY-CXs">
                             <size key="itemSize" width="106" height="106"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -214,6 +219,7 @@
                     <connections>
                         <segue destination="ISM-0J-auN" kind="relationship" relationship="viewControllers" id="40N-bh-UHY"/>
                         <segue destination="xhD-cd-3k6" kind="relationship" relationship="viewControllers" id="IFu-O7-E8q"/>
+                        <segue destination="XfW-N4-6tj" kind="relationship" relationship="viewControllers" id="ezA-1j-UY0"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GUZ-hP-9WS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -227,7 +233,7 @@
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="cid-ic-9y7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.86888767680000001" green="0.92758715449999996" blue="0.94078842470000001" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection id="XYg-eb-gK2">
                                 <cells>
@@ -250,6 +256,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="SVN-dB-3kX" secondAttribute="trailing" id="rrg-cD-mIX"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.86888767680000001" green="0.92758715449999996" blue="0.94078842470000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DetailCell" textLabel="xHP-IK-5DD" detailTextLabel="RmD-Wd-MmJ" style="IBUITableViewCellStyleValue1" id="dBS-WQ-WcS">
                                         <rect key="frame" x="0.0" y="108" width="320" height="44"/>
@@ -274,6 +281,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.86888767680000001" green="0.92758715449999996" blue="0.94078842470000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DetailCell" rowHeight="70" id="Rl0-z3-edQ">
                                         <rect key="frame" x="0.0" y="152" width="320" height="70"/>
@@ -297,6 +305,7 @@
                                                 <constraint firstItem="94N-Ty-acr" firstAttribute="leading" secondItem="wvQ-ZT-Jst" secondAttribute="leading" constant="20" symbolic="YES" id="gpx-aX-YYD"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.86888767680000001" green="0.92758715449999996" blue="0.94078842470000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -318,6 +327,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="egg-4c-AnV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1543" y="823"/>
+        </scene>
+        <!--View Controller - Login-->
+        <scene sceneID="4Rc-EN-jl4">
+            <objects>
+                <viewController id="XfW-N4-6tj" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BsL-th-Dlq"/>
+                        <viewControllerLayoutGuide type="bottom" id="ieR-0s-WhI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6jh-7V-30d">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v42-Fz-err">
+                                <rect key="frame" x="20" y="140" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QUO-en-xE8">
+                                <rect key="frame" x="20" y="178" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CAI-g3-zDc">
+                                <rect key="frame" x="76" y="225" width="168" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Log In">
+                                    <color key="titleColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.8688876767824929" green="0.9275871545289992" blue="0.94078842474489799" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Login" image="settings" id="gUT-Bb-wYZ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Xy-oy-5XT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="548" y="1559"/>
         </scene>
         <!--Navigation Controller - Listings-->
         <scene sceneID="4Bf-xT-fl3">
@@ -364,6 +415,7 @@
         <image name="gallery" width="30" height="30"/>
         <image name="listing" width="30" height="30"/>
         <image name="pencil" width="30" height="30"/>
+        <image name="settings" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
