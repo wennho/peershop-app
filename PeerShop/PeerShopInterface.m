@@ -28,13 +28,13 @@ typedef void (^CompletionBlock)(NSURL *location, NSURLResponse *response, NSErro
     return [NSURL URLWithString:[[self baseURL] stringByAppendingString:@"/peerShop/app/item/"]];
 }
 
-+ (NSURL *) ItemThumbnailURL:(NSDictionary *)item
++ (NSURL *) itemThumbnailURL:(NSDictionary *)item
 {
     return [NSURL URLWithString:[[self baseURL] stringByAppendingString:[item valueForKey:@"thumbnailUrl"]]];
 }
 
 
-+ (NSURL *) ItemImageURL:(NSDictionary *)item
++ (NSURL *) itemImageURL:(NSDictionary *)item
 {
     return [NSURL URLWithString:[[self baseURL] stringByAppendingString:[item valueForKey:@"imageUrl"]]];
 }
@@ -58,17 +58,21 @@ typedef void (^CompletionBlock)(NSURL *location, NSURLResponse *response, NSErro
 }
 
 
-- (void) login
+- (void) loginWithCSRF
 {
 
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[PeerShopInterface loginURL]];
     [request setHTTPMethod:@"POST"];
     NSString *authString = [NSString stringWithFormat:@"username=wenhao;password=mystery;csrfmiddlewaretoken=%@;", self.csrfCookie.value, nil];
-    NSLog(@"%@", authString);
     [request setHTTPBody:[authString dataUsingEncoding:NSUTF8StringEncoding]];
     [self makeLoginRequest:request];
 }
 
++ (void) login
+{
+    PeerShopInterface *me = [PeerShopInterface getSingleton];
+    [me makeLoginRequest:nil];
+}
 
 
 + (void) downloadThumbnail:(NSURL*)url withBlock:(void (^)(UIImage *img)) callback
@@ -141,7 +145,7 @@ typedef void (^CompletionBlock)(NSURL *location, NSURLResponse *response, NSErro
             }
         }
 
-        [self login];
+        [self loginWithCSRF];
     }
 
 

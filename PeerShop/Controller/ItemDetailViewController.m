@@ -46,7 +46,7 @@
 
     if (self.item)
     {
-        NSURL *imageURL = [PeerShopInterface ItemImageURL:self.item];
+        NSURL *imageURL = [PeerShopInterface itemImageURL:self.item];
         [PeerShopInterface downloadThumbnail:imageURL
                                    withBlock:^(UIImage *img) {
                                        self.imageView.image = img;

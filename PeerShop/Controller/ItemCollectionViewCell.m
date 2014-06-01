@@ -24,7 +24,7 @@
 - (void) downloadThumbnail
 {
     if (self.item){
-        NSURL *thumbURL = [PeerShopInterface ItemThumbnailURL:self.item];
+        NSURL *thumbURL = [PeerShopInterface itemThumbnailURL:self.item];
 
         [PeerShopInterface downloadThumbnail:thumbURL
                                    withBlock:^(UIImage *img) {
