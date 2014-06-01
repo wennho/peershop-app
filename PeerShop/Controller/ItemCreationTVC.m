@@ -10,7 +10,7 @@
 #import "PeerShopInterface.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 
-@interface ItemCreationTVC () <UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface ItemCreationTVC () <UIImagePickerControllerDelegate,UINavigationControllerDelegate, UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *itemTitle;
 @property (weak, nonatomic) IBOutlet UITextField *itemPrice;
@@ -26,6 +26,31 @@
 - (void) viewDidLoad {
     [super viewDidLoad];
     [PeerShopInterface login];
+    [self setDescriptionPlaceholder];
+    self.itemDescription.delegate = self;
+}
+
+- (void) setDescriptionPlaceholder
+{
+    self.itemDescription.text = @"Description";
+    self.itemDescription.textColor = [UIColor lightGrayColor];
+}
+
+- (BOOL) textViewShouldBeginEditing:(UITextView *) textView
+{
+    if (textView.textColor == [UIColor lightGrayColor]){
+        textView.text = @"";
+        textView.textColor = [UIColor blackColor];
+    }
+    return YES;
+}
+
+- (void) textViewDidChange:(UITextView *)textView
+{
+    if (textView.text.length == 0){
+        [self setDescriptionPlaceholder];
+        [textView resignFirstResponder];
+    }
 }
 
 - (IBAction)create:(id)sender {
@@ -40,7 +65,7 @@
 }
 
 - (IBAction)getGalleryImage:(id)sender {
-    [self getImage:UIImagePickerControllerSourceTypePhotoLibrary];
+    [self getImage:UIImagePickerControllerSourceTypeSavedPhotosAlbum];
 }
 
 - (IBAction)takePhoto:(id)sender {
