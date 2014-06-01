@@ -78,7 +78,7 @@ typedef void (^CompletionBlock)(NSURL *location, NSURLResponse *response, NSErro
 
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[PeerShopInterface loginURL]];
     [request setHTTPMethod:@"POST"];
-    NSString *authString = [NSString stringWithFormat:@"username=wenhao;password=mystery;%@=%@;",CSRF_KEY ,self.csrfCookie.value, nil];
+    NSString *authString = [NSString stringWithFormat:@"%@=%@&login=wenhao&password=mystery",CSRF_KEY ,self.csrfCookie.value, nil];
     [request setHTTPBody:[authString dataUsingEncoding:NSUTF8StringEncoding]];
     [self makeLoginRequest:request];
 }
@@ -89,6 +89,24 @@ typedef void (^CompletionBlock)(NSURL *location, NSURLResponse *response, NSErro
     [me makeLoginRequest:nil];
 }
 
+
++ (void) downloadItemList: (void (^)(NSArray *itemList)) block
+{
+    NSURL *url = [PeerShopInterface URLforItemList];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        NSArray *items = [NSJSONSerialization JSONObjectWithData:data
+                                                         options:0
+                                                           error:NULL];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            block(items);
+        });
+
+    }];
+    [dataTask resume];
+    
+}
 
 + (void) downloadThumbnail:(NSURL*)url withBlock:(void (^)(UIImage *img)) callback
 {
@@ -183,11 +201,8 @@ typedef void (^CompletionBlock)(NSURL *location, NSURLResponse *response, NSErro
     // we also don't specify a delegate (since completion handler is all we need)
     NSURLSession *session = [NSURLSession sharedSession];
 
-
     NSURLSessionUploadTask *task = [session uploadTaskWithRequest:request fromData:body completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        NSLog(@"complted");
-        NSLog(@"%@", error);
-        NSLog(@"%@", response);
+
 
     }];
     [task resume];
@@ -200,10 +215,12 @@ typedef void (^CompletionBlock)(NSURL *location, NSURLResponse *response, NSErro
 
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
 
-
     if (self.loggedIn) {
         // We're logged in and good to go
         NSLog(@"Logged in");
+                NSArray *cookies = [NSHTTPCookie cookiesWithResponseHeaderFields:[httpResponse allHeaderFields] forURL:[PeerShopInterface loginURL]];
+        NSLog(@"%@", cookies);
+
     } else if (!self.loggedIn) {
         self.loggedIn = YES;
         NSArray *cookies = [NSHTTPCookie cookiesWithResponseHeaderFields:[httpResponse allHeaderFields] forURL:[PeerShopInterface loginURL]];

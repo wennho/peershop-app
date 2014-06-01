@@ -45,19 +45,9 @@
 
 - (IBAction) fetchItems
 {
-    NSURL *url = [PeerShopInterface URLforItemList];
-
-    dispatch_queue_t fetchQueue = dispatch_queue_create("peershop item fetch", NULL);
-    dispatch_async(fetchQueue, ^{
-        NSData *jsonResults = [NSData dataWithContentsOfURL:url];
-        NSArray *items = [NSJSONSerialization JSONObjectWithData:jsonResults
-                                                         options:0
-                                                           error:NULL];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.items = items;
-        });
-    });
-
+    [PeerShopInterface downloadItemList:^(NSArray *itemList) {
+        self.items = itemList;
+    }];
 }
 
 
