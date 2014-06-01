@@ -9,7 +9,6 @@
 #define ITEM_TITLE_KEY @"title"
 #define ITEM_DESCRIPTION_KEY @"description"
 #define ITEM_PRICE_KEY @"price"
-#define ITEM_IMAGE_KEY @"image"
 
 
 
@@ -21,5 +20,5 @@ typedef void (^CallbackBlock)(UIImage *img);
 + (NSURL *) itemImageURL:(NSDictionary *)item;
 + (void) downloadThumbnail:(NSURL*)url withBlock:(CallbackBlock) callback;
 + (void) login;
-+ (void) uploadItem;
++ (void) uploadItem: (NSDictionary *) itemDict withImage:(UIImage *) image;
 @end
