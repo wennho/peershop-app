@@ -8,6 +8,7 @@
 
 #import "ItemCreationTVC.h"
 #import "PeerShopInterface.h"
+#import "ItemDetailViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 
 @interface ItemCreationTVC () <UIImagePickerControllerDelegate,UINavigationControllerDelegate, UITextViewDelegate>
@@ -16,12 +17,13 @@
 @property (weak, nonatomic) IBOutlet UITextField *itemPrice;
 @property (weak, nonatomic) IBOutlet UITextView *itemDescription;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-
+@property (strong, nonatomic) NSDictionary *uploadedItem;
 @end
 
 @implementation ItemCreationTVC
 
-#define IMAGE_ROW 4
+#define IMAGE_ROW 1
+#define DESCRIPTION_ROW 4
 #define PLACEHOLDER_COLOR [UIColor colorWithRed:155/255.0f green:176/255.0f blue:201/255.0f alpha:1.0f]
 
 
@@ -58,12 +60,22 @@
     return YES;
 }
 
-- (void) textViewDidChange:(UITextView *)textView
+- (void) textViewDidEndEditing:(UITextView *)textView
 {
-    if (textView.text.length == 0){
+    if (self.itemDescription.text.length == 0){
         [self setDescriptionPlaceholder];
-        [textView resignFirstResponder];
+        [self.itemDescription resignFirstResponder];
     }
+}
+
+- (void) reset
+{
+    [self setDescriptionPlaceholder];
+    self.itemPrice.text = nil;
+    self.itemTitle.text = nil;
+    self.imageView.image = [UIImage imageNamed:@"noImg"];
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];
 }
 
 - (IBAction)create:(id)sender {
@@ -74,7 +86,22 @@
       ITEM_DESCRIPTION_KEY: self.itemDescription.text,
       };
 
-    [PeerShopInterface uploadItem:itemDict withImage:self.imageView.image];
+    [PeerShopInterface uploadItem:itemDict withImage:self.imageView.image withCallback:^(NSArray *itemList) {
+        self.uploadedItem = [itemList firstObject];
+        [self reset];   // reset interface, so user can create a new item when returning from segue
+        [self performSegueWithIdentifier:@"itemCreation" sender:self];
+    }];
+}
+
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Set up destination view controller
+    id destVC = segue.destinationViewController;
+    if ([destVC isKindOfClass:[ItemDetailViewController class]]) {
+        ItemDetailViewController *detailVC = (ItemDetailViewController *)destVC;
+        detailVC.item = self.uploadedItem;
+    }
 }
 
 - (IBAction)getGalleryImage:(id)sender {
@@ -119,6 +146,8 @@
         } else {
             return 50;
         }
+    } else if (indexPath.row == DESCRIPTION_ROW){
+        return 150;
     } else {
         return self.tableView.rowHeight;
     }

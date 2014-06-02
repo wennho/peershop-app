@@ -22,7 +22,7 @@ typedef void (^SuccessCallback)(BOOL success);
 + (void) downloadThumbnail:(NSURL*)url withBlock:(CallbackBlock) callback;
 + (void) login:(SuccessCallback) callback;
 + (void) ensureLogin: (UIViewController *) vc;
-+ (void) uploadItem: (NSDictionary *) itemDict withImage:(UIImage *) image;
++ (void) uploadItem: (NSDictionary *) itemDict withImage:(UIImage *) image withCallback:(void (^)(NSArray *itemList)) callback;
 + (void) downloadItemList: (void (^)(NSArray *itemList)) block;
 
 + (NSString *) username;

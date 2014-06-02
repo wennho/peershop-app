@@ -88,7 +88,7 @@ static BOOL loggedIn = NO;
 
 + (NSURL *) itemUploadURL
 {
-    return [NSURL URLWithString:[[self baseURLString] stringByAppendingString:@"/upload/new/"]];
+    return [NSURL URLWithString:[[self baseURLString] stringByAppendingString:@"/peerShop/app/item/new/"]];
 }
 
 + (NSURL *) loginURL
@@ -243,7 +243,7 @@ static BOOL loggedIn = NO;
 
 
 
-+ (void) uploadItem: (NSDictionary *) itemDict withImage:(UIImage *) image
++ (void) uploadItem: (NSDictionary *) itemDict withImage:(UIImage *) image withCallback:(void (^)(NSArray *itemList)) callback
 {
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[PeerShopInterface itemUploadURL]];
     [request setHTTPMethod:@"POST"];
@@ -292,7 +292,16 @@ static BOOL loggedIn = NO;
 
 
     NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionUploadTask *task = [session uploadTaskWithRequest:request fromData:body];
+    NSURLSessionUploadTask *task = [session uploadTaskWithRequest:request
+                                                         fromData:body
+                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        NSArray *items = [NSJSONSerialization JSONObjectWithData:data
+                                                         options:0
+                                                           error:NULL];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            callback(items);
+        });
+    }];
     [task resume];
 
 }
