@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *price;
 @property (weak, nonatomic) IBOutlet UILabel *description;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UILabel *itemOwner;
 
 @end
 
@@ -37,7 +38,7 @@
         // at least have whitespace in the description so that height calculations work out
         self.description.text = @" ";
     }
-
+    self.itemOwner.text = [NSString stringWithFormat:@"Posted by %@", self.item[ITEM_USER_KEY]];
     [self startDownloadingImage];
 }
 

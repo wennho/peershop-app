@@ -9,7 +9,7 @@
 #define ITEM_TITLE_KEY @"title"
 #define ITEM_DESCRIPTION_KEY @"description"
 #define ITEM_PRICE_KEY @"price"
-
+#define ITEM_USER_KEY @"user"
 
 
 typedef void (^CallbackBlock)(UIImage *img);

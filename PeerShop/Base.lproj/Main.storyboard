@@ -308,6 +308,28 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.81176470590000005" green="0.90196078430000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="ueK-97-2Mf">
+                                        <rect key="frame" x="0.0" y="222" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ueK-97-2Mf" id="SXU-On-KQh">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Posted by" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ftg-bM-HVI">
+                                                    <rect key="frame" x="15" y="11" width="290" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="ftg-bM-HVI" secondAttribute="trailing" constant="15" id="0qS-98-MTi"/>
+                                                <constraint firstAttribute="centerY" secondItem="ftg-bM-HVI" secondAttribute="centerY" id="UXx-Zd-Xnw"/>
+                                                <constraint firstItem="ftg-bM-HVI" firstAttribute="leading" secondItem="SXU-On-KQh" secondAttribute="leading" constant="15" id="wa8-ue-LAi"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.81176470590000005" green="0.90196078430000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -321,6 +343,7 @@
                     <connections>
                         <outlet property="description" destination="94N-Ty-acr" id="XK2-6m-Jpk"/>
                         <outlet property="imageView" destination="SVN-dB-3kX" id="QiW-5D-TXt"/>
+                        <outlet property="itemOwner" destination="ftg-bM-HVI" id="ZEA-kN-RPK"/>
                         <outlet property="itemTitle" destination="xHP-IK-5DD" id="PXz-dg-tz7"/>
                         <outlet property="price" destination="RmD-Wd-MmJ" id="7QF-4r-COD"/>
                     </connections>
