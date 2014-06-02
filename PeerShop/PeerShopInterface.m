@@ -172,6 +172,27 @@ static BOOL loggedIn = NO;
     [dataTask resume];
 }
 
++ (void) ensureLogin: (UIViewController *) vc
+{
+    if (!loggedIn) {
+        [PeerShopInterface login:^(BOOL success){
+            if (!success) {
+
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    UIAlertView *alert = [[UIAlertView alloc]
+                                          initWithTitle:@"Login Failure"
+                                          message:@"Please try logging in again"
+                                          delegate:vc
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil,
+                                          nil];
+                    [alert show];
+                });
+            }
+        }];
+    }
+}
+
 #pragma mark Download/Upload
 
 + (void) downloadItemList: (void (^)(NSArray *itemList)) block

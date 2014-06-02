@@ -25,9 +25,19 @@
 
 - (void) viewDidLoad {
     [super viewDidLoad];
-    [PeerShopInterface login:nil];
     [self setDescriptionPlaceholder];
     self.itemDescription.delegate = self;
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [PeerShopInterface ensureLogin:self];
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    self.tabBarController.selectedIndex = 2;
 }
 
 - (void) setDescriptionPlaceholder
