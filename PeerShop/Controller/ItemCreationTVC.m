@@ -25,7 +25,7 @@
 
 - (void) viewDidLoad {
     [super viewDidLoad];
-    [PeerShopInterface login];
+    [PeerShopInterface login:nil];
     [self setDescriptionPlaceholder];
     self.itemDescription.delegate = self;
 }

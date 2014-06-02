@@ -13,12 +13,19 @@
 
 
 typedef void (^CallbackBlock)(UIImage *img);
+typedef void (^SuccessCallback)(BOOL success);
 
 @interface PeerShopInterface : NSObject
+
 + (NSURL *) itemThumbnailURL:(NSDictionary *)item;
 + (NSURL *) itemImageURL:(NSDictionary *)item;
 + (void) downloadThumbnail:(NSURL*)url withBlock:(CallbackBlock) callback;
-+ (void) login;
++ (void) login:(SuccessCallback) callback;
 + (void) uploadItem: (NSDictionary *) itemDict withImage:(UIImage *) image;
 + (void) downloadItemList: (void (^)(NSArray *itemList)) block;
+
++ (NSString *) username;
++ (NSString *) password;
++ (void) setUsername:(NSString *)username;
++ (void) setPassword:(NSString *)password;
 @end

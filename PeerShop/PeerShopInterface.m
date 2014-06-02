@@ -9,15 +9,19 @@
 typedef void (^CompletionBlock)(NSURL *location, NSURLResponse *response, NSError *error);
 
 @interface PeerShopInterface ()
-@property (nonatomic) BOOL loggedIn;
-@property (nonatomic, strong) NSString *username;
-@property (nonatomic, strong) NSString *password;
+
 @end
 
 #define BOUNDARY @"peershopboundary"
 #define CSRF_KEY @"csrfmiddlewaretoken"
+#define USERNAME_KEY @"PeerShopUsername"
+#define PASSWORD_KEY @"PeerShopPassword"
 
 @implementation PeerShopInterface
+
+static NSString *_username;
+static NSString *_password;
+static BOOL loggedIn = NO;
 
 + (PeerShopInterface *) getSingleton
 {
@@ -28,6 +32,35 @@ typedef void (^CompletionBlock)(NSURL *location, NSURLResponse *response, NSErro
     return singleton;
 }
 
++ (NSString *) username
+{
+    if (!_username) {
+        _username = [[NSUserDefaults standardUserDefaults] stringForKey:USERNAME_KEY];
+    }
+    return _username;
+}
+
++ (NSString *) password
+{
+    if (!_password) {
+        _password = [[NSUserDefaults standardUserDefaults] stringForKey:PASSWORD_KEY];
+    }
+    return _password;
+}
+
++ (void) setUsername:(NSString *)username
+{
+    _username = username;
+    [[NSUserDefaults standardUserDefaults] setObject:_username forKey:USERNAME_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (void) setPassword:(NSString *)password
+{
+    _password = password;
+    [[NSUserDefaults standardUserDefaults] setObject:_password forKey:PASSWORD_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
 
 #pragma mark URLs
 
@@ -64,6 +97,13 @@ typedef void (^CompletionBlock)(NSURL *location, NSURLResponse *response, NSErro
                                  stringByAppendingString:@"/user/login/"]];
 }
 
++ (NSURL *) logoutURL
+{
+    return [NSURL URLWithString:[[self baseURLString]
+                                 stringByAppendingString:@"/user/logout/"]];
+}
+
+
 #pragma mark Login
 
 + (NSString *) getCSRF
@@ -77,27 +117,57 @@ typedef void (^CompletionBlock)(NSURL *location, NSURLResponse *response, NSErro
     return nil;
 }
 
-+ (void) loginWithCSRF
++ (void) loginWithCSRF:(SuccessCallback) callback
 {
-
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[PeerShopInterface loginURL]];
     [request setHTTPMethod:@"POST"];
-    NSString *authString = [NSString stringWithFormat:@"%@=%@&login=wenhao&password=mystery",CSRF_KEY ,[PeerShopInterface getCSRF], nil];
+    NSString *authString = [NSString stringWithFormat:
+                            @"%@=%@&login=%@&password=%@",
+                            CSRF_KEY ,
+                            [PeerShopInterface getCSRF],
+                            [PeerShopInterface username],
+                            [PeerShopInterface password],
+                            nil];
     [request setHTTPBody:[authString dataUsingEncoding:NSUTF8StringEncoding]];
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *dataTask =  [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        // We're logged in and good to go
+
+        BOOL success = ![response.URL isEqual:[PeerShopInterface loginURL]];
+        loggedIn = success;
+        callback(success);
+
     }];
     [dataTask resume];
 }
 
-+ (void) login
++ (void) logoutThenLogin:(SuccessCallback) callback
+{
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[PeerShopInterface logoutURL]];
+    [request setHTTPMethod:@"POST"];
+    NSString *authString = [NSString stringWithFormat:
+                            @"%@=%@",
+                            CSRF_KEY ,
+                            [PeerShopInterface getCSRF],
+                            nil];
+    [request setHTTPBody:[authString dataUsingEncoding:NSUTF8StringEncoding]];
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask =  [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        [PeerShopInterface loginWithCSRF:callback];
+    }];
+    [dataTask resume];
+}
+
++ (void) login:(SuccessCallback) callback
 {
     // obtain CSRF, then login
     NSURLRequest *request = [NSMutableURLRequest requestWithURL:[PeerShopInterface loginURL]];
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *dataTask =  [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        [PeerShopInterface loginWithCSRF];
+        if (loggedIn){
+            [PeerShopInterface logoutThenLogin:callback];
+        } else {
+            [PeerShopInterface loginWithCSRF:callback];
+        }
     }];
     [dataTask resume];
 }
