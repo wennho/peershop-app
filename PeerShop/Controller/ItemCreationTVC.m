@@ -22,11 +22,14 @@
 @implementation ItemCreationTVC
 
 #define IMAGE_ROW 4
+#define PLACEHOLDER_COLOR [UIColor colorWithRed:155/255.0f green:176/255.0f blue:201/255.0f alpha:1.0f]
+
 
 - (void) viewDidLoad {
     [super viewDidLoad];
     [self setDescriptionPlaceholder];
     self.itemDescription.delegate = self;
+
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -43,12 +46,12 @@
 - (void) setDescriptionPlaceholder
 {
     self.itemDescription.text = @"Description";
-    self.itemDescription.textColor = [UIColor lightGrayColor];
+    self.itemDescription.textColor = PLACEHOLDER_COLOR;
 }
 
 - (BOOL) textViewShouldBeginEditing:(UITextView *) textView
 {
-    if (textView.textColor == [UIColor lightGrayColor]){
+    if ([self.itemDescription.textColor isEqual: PLACEHOLDER_COLOR]){
         textView.text = @"";
         textView.textColor = [UIColor blackColor];
     }
