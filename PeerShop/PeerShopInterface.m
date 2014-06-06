@@ -62,6 +62,11 @@ static BOOL loggedIn = NO;
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
++ (BOOL) isLoggedIn
+{
+    return loggedIn;
+}
+
 #pragma mark URLs
 
 + (NSString *) baseURLString
@@ -140,7 +145,7 @@ static BOOL loggedIn = NO;
     [dataTask resume];
 }
 
-+ (void) logoutThenLogin:(SuccessCallback) callback
++ (void) logOut:(SuccessCallback) callback
 {
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[PeerShopInterface logoutURL]];
     [request setHTTPMethod:@"POST"];
@@ -152,9 +157,17 @@ static BOOL loggedIn = NO;
     [request setHTTPBody:[authString dataUsingEncoding:NSUTF8StringEncoding]];
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *dataTask =  [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        [PeerShopInterface loginWithCSRF:callback];
+        loggedIn = NO;
+        callback(YES);
     }];
     [dataTask resume];
+}
+
++ (void) logoutThenLogin:(SuccessCallback) callback
+{
+    [PeerShopInterface logOut: ^(BOOL success){
+        [PeerShopInterface loginWithCSRF:callback];
+    }];
 }
 
 + (void) login:(SuccessCallback) callback

@@ -21,6 +21,8 @@ typedef void (^SuccessCallback)(BOOL success);
 + (NSURL *) itemImageURL:(NSDictionary *)item;
 + (void) downloadThumbnail:(NSURL*)url withBlock:(CallbackBlock) callback;
 + (void) login:(SuccessCallback) callback;
++ (void) logOut:(SuccessCallback) callback;
++ (BOOL) isLoggedIn;
 + (void) ensureLogin: (UIViewController *) vc;
 + (void) uploadItem: (NSDictionary *) itemDict withImage:(UIImage *) image withCallback:(void (^)(NSArray *itemList)) callback;
 + (void) downloadItemList: (void (^)(NSArray *itemList)) block;
