@@ -27,6 +27,8 @@
 		3D5C9BB1193D284E00359CEF /* ItemCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5C9BB0193D284E00359CEF /* ItemCollectionViewLayout.m */; };
 		3D634FF9193B4009007EFEB1 /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D634FF8193B4009007EFEB1 /* LoginVC.m */; };
 		3D776E86193555C9007EECC4 /* ItemCreationTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D776E85193555C9007EECC4 /* ItemCreationTVC.m */; };
+		3D8C9AF61941771D00B13494 /* PeerShopHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D8C9AF51941771D00B13494 /* PeerShopHeaderView.xib */; };
+		3D8C9AF919417A2700B13494 /* PeerShopHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8C9AF819417A2700B13494 /* PeerShopHeaderView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,9 @@
 		3D634FF8193B4009007EFEB1 /* LoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginVC.m; path = Controller/LoginVC.m; sourceTree = "<group>"; };
 		3D776E84193555C9007EECC4 /* ItemCreationTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemCreationTVC.h; path = Controller/ItemCreationTVC.h; sourceTree = "<group>"; };
 		3D776E85193555C9007EECC4 /* ItemCreationTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemCreationTVC.m; path = Controller/ItemCreationTVC.m; sourceTree = "<group>"; };
+		3D8C9AF51941771D00B13494 /* PeerShopHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PeerShopHeaderView.xib; sourceTree = "<group>"; };
+		3D8C9AF719417A2700B13494 /* PeerShopHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PeerShopHeaderView.h; path = View/PeerShopHeaderView.h; sourceTree = "<group>"; };
+		3D8C9AF819417A2700B13494 /* PeerShopHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PeerShopHeaderView.m; path = View/PeerShopHeaderView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,12 +135,15 @@
 		3D45473119234CA4007551D2 /* PeerShop */ = {
 			isa = PBXGroup;
 			children = (
+				3D8C9AF4194176F100B13494 /* View */,
 				3D5C9BAE193D281400359CEF /* ItemCollection */,
 				3D45476019235E16007551D2 /* Controller */,
 				3D45473D19234CA4007551D2 /* Main.storyboard */,
 				3D45474319234CA4007551D2 /* Images.xcassets */,
 				3D45476A19236961007551D2 /* PeerShopInterface.h */,
 				3D45476B19236961007551D2 /* PeerShopInterface.m */,
+				3D45473A19234CA4007551D2 /* PeerShopAppDelegate.h */,
+				3D45473B19234CA4007551D2 /* PeerShopAppDelegate.m */,
 				3D45473219234CA4007551D2 /* Supporting Files */,
 			);
 			path = PeerShop;
@@ -144,8 +152,6 @@
 		3D45473219234CA4007551D2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3D45473A19234CA4007551D2 /* PeerShopAppDelegate.h */,
-				3D45473B19234CA4007551D2 /* PeerShopAppDelegate.m */,
 				3D45473319234CA4007551D2 /* PeerShop-Info.plist */,
 				3D45473419234CA4007551D2 /* InfoPlist.strings */,
 				3D45473719234CA4007551D2 /* main.m */,
@@ -196,6 +202,16 @@
 				3D5C9BB0193D284E00359CEF /* ItemCollectionViewLayout.m */,
 			);
 			name = ItemCollection;
+			sourceTree = "<group>";
+		};
+		3D8C9AF4194176F100B13494 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3D8C9AF51941771D00B13494 /* PeerShopHeaderView.xib */,
+				3D8C9AF719417A2700B13494 /* PeerShopHeaderView.h */,
+				3D8C9AF819417A2700B13494 /* PeerShopHeaderView.m */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,6 +295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D45474419234CA4007551D2 /* Images.xcassets in Resources */,
+				3D8C9AF61941771D00B13494 /* PeerShopHeaderView.xib in Resources */,
 				3D45473619234CA4007551D2 /* InfoPlist.strings in Resources */,
 				3D45473F19234CA4007551D2 /* Main.storyboard in Resources */,
 			);
@@ -306,6 +323,7 @@
 				3D5C9BB1193D284E00359CEF /* ItemCollectionViewLayout.m in Sources */,
 				3D45473819234CA4007551D2 /* main.m in Sources */,
 				3D776E86193555C9007EECC4 /* ItemCreationTVC.m in Sources */,
+				3D8C9AF919417A2700B13494 /* PeerShopHeaderView.m in Sources */,
 				3D634FF9193B4009007EFEB1 /* LoginVC.m in Sources */,
 				3D45476619235F79007551D2 /* ItemDetailViewController.m in Sources */,
 			);

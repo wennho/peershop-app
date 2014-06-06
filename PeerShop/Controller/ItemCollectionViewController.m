@@ -10,6 +10,7 @@
 #import "ItemCollectionViewCell.h"
 #import "ItemDetailViewController.h"
 #import "PeerShopInterface.h"
+#import "PeerShopHeaderView.h"
 
 @interface ItemCollectionViewController ()
 // Image names for thumbnails
@@ -44,6 +45,8 @@
 - (void) viewDidLoad
 {
     [super viewDidLoad];
+    UINib *cellNIB = [UINib nibWithNibName:NSStringFromClass([PeerShopHeaderView class]) bundle:nil];
+    [self.collectionView registerNib:cellNIB forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([PeerShopHeaderView class])];
     [self fetchItems];
 
 }
@@ -90,6 +93,25 @@
     myCell.item = self.items[indexPath.row];
     return myCell;
 }
+
+- (UICollectionReusableView *) collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionReusableView *view = nil;
+    if (kind == UICollectionElementKindSectionHeader) {
+        view = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+                                                  withReuseIdentifier:NSStringFromClass([PeerShopHeaderView class])
+                                                         forIndexPath:indexPath];
+    }
+
+    return view;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
+{
+    // only the height component is used
+    return CGSizeMake(50, 35);
+}
+
 
 #pragma mark - Navigation
 

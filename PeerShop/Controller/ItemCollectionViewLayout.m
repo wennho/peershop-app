@@ -10,25 +10,24 @@
 
 @implementation ItemCollectionViewLayout
 
-#define SPACING 0
+#define SPACING 2
 
 
 
 - (CGFloat) minimumInteritemSpacing
 {
-    return 2;
+    return SPACING;
 }
 
 - (CGFloat) minimumLineSpacing
 {
-    return 2;
+    return SPACING;
 }
 
 - (CGSize) itemSize
 {
     return CGSizeMake(105, 105);
 }
-
 
 - (UICollectionViewLayoutAttributes *)initialLayoutAttributesForAppearingItemAtIndexPath:(NSIndexPath *)itemIndexPath
 {
