@@ -13,6 +13,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    UIColor *background =[UIColor colorWithRed:87/255.0 green:142/255.0 blue:138/255.0 alpha:1.0];
+    UIColor *highlight = [UIColor colorWithRed:150/255.0 green:220/255.0 blue:220/255.0 alpha:1.0];
+
+    [[UITabBar appearance] setTintColor:highlight];
+    [[UICollectionView appearance] setBackgroundColor:background];
+    [[UITableView appearance] setBackgroundColor:background];
+    [[UITextView appearance] setBackgroundColor:background];
+    [[UIButton appearance] setTitleColor:highlight forState:UIControlStateNormal];
     return YES;
 }
 							

@@ -167,7 +167,7 @@
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="Z2m-xM-Cl9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.81176470590000005" green="0.90196078430000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.3411764706" green="0.5568627451" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewLayout key="collectionViewLayout" id="qDI-I0-3s0" customClass="ItemCollectionViewLayout"/>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItemCell" id="rzS-N4-6zg" customClass="ItemCollectionViewCell">
@@ -212,9 +212,10 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="LsF-VM-3IG" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="v7P-00-Lil">
+                    <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" id="v7P-00-Lil">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="ISM-0J-auN" kind="relationship" relationship="viewControllers" id="40N-bh-UHY"/>
@@ -233,7 +234,7 @@
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="cid-ic-9y7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.81176470588235294" green="0.90196078431372551" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.3411764706" green="0.5568627451" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection id="XYg-eb-gK2">
                                 <cells>
@@ -269,14 +270,14 @@
                                                     <rect key="frame" x="15" y="11" width="33" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.58823529409999997" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="$10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RmD-Wd-MmJ">
                                                     <rect key="frame" x="276" y="11" width="29" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -290,19 +291,19 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="69"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Description" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="94N-Ty-acr">
-                                                    <rect key="frame" x="20" y="11" width="280" height="47"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Description. Let's try a long one with at least two lines so we can see how it wraps" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="290" translatesAutoresizingMaskIntoConstraints="NO" id="94N-Ty-acr">
+                                                    <rect key="frame" x="15" y="11" width="290" height="47"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.58823529409999997" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="94N-Ty-acr" secondAttribute="bottom" constant="11" id="5g1-Qj-b5Y"/>
                                                 <constraint firstItem="94N-Ty-acr" firstAttribute="top" secondItem="wvQ-ZT-Jst" secondAttribute="top" constant="11" id="Uza-KT-Nfz"/>
-                                                <constraint firstAttribute="trailing" secondItem="94N-Ty-acr" secondAttribute="trailing" constant="20" symbolic="YES" id="caa-rc-mOg"/>
-                                                <constraint firstItem="94N-Ty-acr" firstAttribute="leading" secondItem="wvQ-ZT-Jst" secondAttribute="leading" constant="20" symbolic="YES" id="gpx-aX-YYD"/>
+                                                <constraint firstAttribute="trailing" secondItem="94N-Ty-acr" secondAttribute="trailing" constant="15" id="caa-rc-mOg"/>
+                                                <constraint firstItem="94N-Ty-acr" firstAttribute="leading" secondItem="wvQ-ZT-Jst" secondAttribute="leading" constant="15" id="gpx-aX-YYD"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -318,6 +319,7 @@
                                                     <rect key="frame" x="15" y="11" width="290" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.58823529409999997" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -395,7 +397,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.81176470588235294" green="0.90196078431372551" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.3411764706" green="0.5568627451" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Login" image="settings" id="gUT-Bb-wYZ"/>
@@ -416,9 +418,11 @@
                     <tabBarItem key="tabBarItem" title="Listings" image="listing" id="YXS-HE-B7H"/>
                     <toolbarItems/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Zru-p9-TGO">
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" barStyle="black"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="Zru-p9-TGO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.58823529409999997" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

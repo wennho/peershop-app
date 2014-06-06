@@ -12,6 +12,8 @@
 
 #define SPACING 0
 
+
+
 - (CGFloat) minimumInteritemSpacing
 {
     return 2;
@@ -26,6 +28,7 @@
 {
     return CGSizeMake(105, 105);
 }
+
 
 - (UICollectionViewLayoutAttributes *)initialLayoutAttributesForAppearingItemAtIndexPath:(NSIndexPath *)itemIndexPath
 {
