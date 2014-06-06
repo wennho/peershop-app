@@ -72,7 +72,7 @@ static BOOL loggedIn = NO;
 + (NSString *) baseURLString
 {
     return @"http://luiwenhao.com";
-//    return @"http://localhost:8000";
+    //    return @"http://localhost:8000";
 }
 
 + (NSURL *) URLforItemList
@@ -137,9 +137,11 @@ static BOOL loggedIn = NO;
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *dataTask =  [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
 
-        BOOL success = ![response.URL isEqual:[PeerShopInterface loginURL]];
-        loggedIn = success;
-        callback(success);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            BOOL success = ![response.URL isEqual:[PeerShopInterface loginURL]];
+            loggedIn = success;
+            callback(success);
+        });
 
     }];
     [dataTask resume];
@@ -157,8 +159,10 @@ static BOOL loggedIn = NO;
     [request setHTTPBody:[authString dataUsingEncoding:NSUTF8StringEncoding]];
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *dataTask =  [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        loggedIn = NO;
-        callback(YES);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            loggedIn = NO;
+            callback(YES);
+        });
     }];
     [dataTask resume];
 }
@@ -176,11 +180,13 @@ static BOOL loggedIn = NO;
     NSURLRequest *request = [NSMutableURLRequest requestWithURL:[PeerShopInterface loginURL]];
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *dataTask =  [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        if (loggedIn){
-            [PeerShopInterface logoutThenLogin:callback];
-        } else {
-            [PeerShopInterface loginWithCSRF:callback];
-        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (loggedIn){
+                [PeerShopInterface logoutThenLogin:callback];
+            } else {
+                [PeerShopInterface loginWithCSRF:callback];
+            }
+        });
     }];
     [dataTask resume];
 }
@@ -188,21 +194,16 @@ static BOOL loggedIn = NO;
 + (void) ensureLogin: (UIViewController *) vc
 {
     if (!loggedIn) {
-        [PeerShopInterface login:^(BOOL success){
-            if (!success) {
-
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    UIAlertView *alert = [[UIAlertView alloc]
-                                          initWithTitle:@"Login Failure"
-                                          message:@"Please try logging in again"
-                                          delegate:vc
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil,
-                                          nil];
-                    [alert show];
-                });
-            }
-        }];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UIAlertView *alert = [[UIAlertView alloc]
+                                  initWithTitle:@"Not Logged In"
+                                  message:@"Log in before creating an item."
+                                  delegate:vc
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil,
+                                  nil];
+            [alert show];
+        });
     }
 }
 
@@ -223,7 +224,7 @@ static BOOL loggedIn = NO;
 
     }];
     [dataTask resume];
-    
+
 }
 
 + (void) downloadThumbnail:(NSURL*)url withBlock:(void (^)(UIImage *img)) callback
@@ -251,7 +252,7 @@ static BOOL loggedIn = NO;
     NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request
                                                     completionHandler:block];
     [task resume];
-    
+
 }
 
 
@@ -308,15 +309,15 @@ static BOOL loggedIn = NO;
     NSURLSessionUploadTask *task = [session uploadTaskWithRequest:request
                                                          fromData:body
                                                 completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        NSArray *items = [NSJSONSerialization JSONObjectWithData:data
-                                                         options:0
-                                                           error:NULL];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            callback(items);
-        });
-    }];
+                                                    NSArray *items = [NSJSONSerialization JSONObjectWithData:data
+                                                                                                     options:0
+                                                                                                       error:NULL];
+                                                    dispatch_async(dispatch_get_main_queue(), ^{
+                                                        callback(items);
+                                                    });
+                                                }];
     [task resume];
-
+    
 }
 
 

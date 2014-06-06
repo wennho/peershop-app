@@ -27,15 +27,13 @@
 {
     [super viewDidLoad];
 
-    self.usernameOffset = self.usernameField.frame.origin.x;
-    self.passwordOffset = self.passwordField.frame.origin.x;
-    self.messageOffset = self.loginMessage.frame.origin.x;
-
-    self.loginMessage.hidden = YES;
-
     if ([PeerShopInterface isLoggedIn]) {
+
+        self.usernameField.hidden = YES;
+        self.passwordField.hidden = YES;
         [self logoutMode];
     } else {
+        self.loginMessage.hidden = YES;
         [self loginMode];
     }
 
@@ -44,31 +42,68 @@
 
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+    if ([PeerShopInterface isLoggedIn]) {
+        [self setLogoutFrames];
+        [self logoutMode];
+    } else {
+        [self setLoginFrames];
+        [self loginMode];
+    }
+
+}
+
 - (void) viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
 
-    // setting the correct frame offset does not work in viewDidLoad
-    CGRect frame = self.loginMessage.frame;
-    self.loginMessage.frame = CGRectMake(self.messageOffset - ANIMATION_OFFSET, frame.origin.y, frame.size.width, frame.size.height);
+    self.usernameOffset = self.usernameField.frame.origin.x;
+    self.passwordOffset = self.passwordField.frame.origin.x;
+    self.messageOffset = self.loginMessage.frame.origin.x;
 
+}
+
+- (void) setLoginFrames
+{
+    CGRect frame = self.usernameField.frame;
+    self.usernameField.frame = CGRectMake(self.usernameOffset, frame.origin.y, frame.size.width, frame.size.height);
+    frame = self.passwordField.frame;
+    self.passwordField.frame = CGRectMake(self.passwordOffset, frame.origin.y, frame.size.width, frame.size.height);
+    frame = self.loginMessage.frame;
+    self.loginMessage.frame = CGRectMake(self.messageOffset - ANIMATION_OFFSET, frame.origin.y, frame.size.width, frame.size.height);
+}
+
+- (void) setLogoutFrames
+{
+    CGRect frame = self.usernameField.frame;
+    self.usernameField.frame = CGRectMake(self.usernameOffset + ANIMATION_OFFSET, frame.origin.y, frame.size.width, frame.size.height);
+    frame = self.passwordField.frame;
+    self.passwordField.frame = CGRectMake(self.passwordOffset + ANIMATION_OFFSET, frame.origin.y, frame.size.width, frame.size.height);
+    frame = self.loginMessage.frame;
+    self.loginMessage.frame = CGRectMake(self.messageOffset, frame.origin.y, frame.size.width, frame.size.height);
 }
 
 - (void) loginMode
 {
+    self.usernameField.hidden = NO;
+    self.passwordField.hidden = NO;
+
+
     void (^animations)(void) = ^{
-        CGRect frame = self.usernameField.frame;
-        self.usernameField.frame = CGRectMake(self.usernameOffset, frame.origin.y, frame.size.width, frame.size.height);
-        frame = self.passwordField.frame;
-        self.passwordField.frame = CGRectMake(self.passwordOffset, frame.origin.y, frame.size.width, frame.size.height);
-        frame = self.loginMessage.frame;
-        self.loginMessage.frame = CGRectMake(self.messageOffset - ANIMATION_OFFSET, frame.origin.y, frame.size.width, frame.size.height);
+        [self setLoginFrames];
 
         [self.button setTitle:@"Log In" forState:UIControlStateNormal];
         self.loginStatus.text = nil;
 
         self.usernameField.text = [PeerShopInterface username];
         self.passwordField.text = [PeerShopInterface password];
+
+        self.usernameField.alpha = 1;
+        self.passwordField.alpha = 1;
+        self.loginMessage.alpha = 0;
     };
 
     [UIView animateWithDuration:0.3
@@ -77,19 +112,18 @@
 
 - (void) logoutMode
 {
-    self.loginMessage.hidden = NO;
-
+        self.loginMessage.hidden = NO;
     void (^animations)(void) = ^{
-        CGRect frame = self.usernameField.frame;
-        self.usernameField.frame = CGRectMake(self.usernameOffset + ANIMATION_OFFSET, frame.origin.y, frame.size.width, frame.size.height);
-        frame = self.passwordField.frame;
-        self.passwordField.frame = CGRectMake(self.passwordOffset + ANIMATION_OFFSET, frame.origin.y, frame.size.width, frame.size.height);
-        frame = self.loginMessage.frame;
-        self.loginMessage.frame = CGRectMake(self.messageOffset, frame.origin.y, frame.size.width, frame.size.height);
+        [self setLogoutFrames];
 
         [self.button setTitle:@"Log Out" forState:UIControlStateNormal];
 
         self.loginMessage.text = [NSString stringWithFormat:@"Logged in as %@", [PeerShopInterface username]];
+
+        self.loginMessage.alpha = 1;
+        self.usernameField.alpha = 0;
+        self.passwordField.alpha = 0;
+        self.loginStatus.text = nil;
 
     };
 
@@ -113,24 +147,20 @@
         [PeerShopInterface setPassword:self.passwordField.text];
 
         SuccessCallback callback = ^(BOOL success){
-
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if (success) {
-                    [self logoutMode];
-                } else {
-                    self.loginStatus.text = @"Invalid username or password";
-                }
-            });
-
+            if (success) {
+                [self setLoginFrames];
+                [self logoutMode];
+            } else {
+                self.loginStatus.text = @"Invalid username or password";
+            }
         };
 
         [PeerShopInterface login:callback];
     } else {
         [PeerShopInterface logOut:^(BOOL success) {
             if (success) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self loginMode];
-                });
+                [self setLogoutFrames];
+                [self loginMode];
             }
         }];
     }
