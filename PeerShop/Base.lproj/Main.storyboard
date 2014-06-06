@@ -119,7 +119,7 @@
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bxO-RT-rBK">
                                                     <rect key="frame" x="10" y="0.0" width="300" height="99"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                    <color key="backgroundColor" red="0.81176470590000005" green="0.90196078430000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
@@ -148,6 +148,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <connections>
                         <outlet property="imageView" destination="XOn-au-IdF" id="6Lv-6n-VaM"/>
                         <outlet property="itemDescription" destination="bxO-RT-rBK" id="KuS-1f-ex5"/>
@@ -167,8 +168,12 @@
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="Z2m-xM-Cl9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.3411764706" green="0.5568627451" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <collectionViewLayout key="collectionViewLayout" id="qDI-I0-3s0" customClass="ItemCollectionViewLayout"/>
+                        <imageView key="backgroundView" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" id="bt7-Zi-AlN">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItemCell" id="rzS-N4-6zg" customClass="ItemCollectionViewCell">
                                 <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
@@ -234,7 +239,7 @@
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="cid-ic-9y7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.3411764706" green="0.5568627451" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <sections>
                             <tableViewSection id="XYg-eb-gK2">
                                 <cells>
@@ -361,7 +366,7 @@
                         <viewControllerLayoutGuide type="top" id="BsL-th-Dlq"/>
                         <viewControllerLayoutGuide type="bottom" id="ieR-0s-WhI"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="6jh-7V-30d">
+                    <view key="view" contentMode="scaleToFill" id="6jh-7V-30d" customClass="BackgroundView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -397,7 +402,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.3411764706" green="0.5568627451" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Login" image="settings" id="gUT-Bb-wYZ"/>
@@ -439,7 +444,8 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xhD-cd-3k6" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Create" image="pencil" id="i9b-ia-SLX"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Cuv-Ct-m90">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="Cuv-Ct-m90">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -454,6 +460,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="background" width="640" height="960"/>
         <image name="camera" width="30" height="30"/>
         <image name="gallery" width="30" height="30"/>
         <image name="listing" width="30" height="30"/>

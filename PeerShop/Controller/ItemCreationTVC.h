@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BackgroundTVC.h"
 
-@interface ItemCreationTVC : UITableViewController
+@interface ItemCreationTVC : BackgroundTVC
 
 @end

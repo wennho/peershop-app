@@ -32,7 +32,7 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" red="0.3411764706" green="0.5568627451" blue="0.54117647059999996" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
         </collectionReusableView>
     </objects>
 </document>

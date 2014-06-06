@@ -29,6 +29,8 @@
 		3D776E86193555C9007EECC4 /* ItemCreationTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D776E85193555C9007EECC4 /* ItemCreationTVC.m */; };
 		3D8C9AF61941771D00B13494 /* PeerShopHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D8C9AF51941771D00B13494 /* PeerShopHeaderView.xib */; };
 		3D8C9AF919417A2700B13494 /* PeerShopHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8C9AF819417A2700B13494 /* PeerShopHeaderView.m */; };
+		3DA311CB194268D80041F993 /* BackgroundTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA311CA194268D80041F993 /* BackgroundTVC.m */; };
+		3DA311CE194269930041F993 /* BackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA311CD194269930041F993 /* BackgroundView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +78,10 @@
 		3D8C9AF51941771D00B13494 /* PeerShopHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PeerShopHeaderView.xib; sourceTree = "<group>"; };
 		3D8C9AF719417A2700B13494 /* PeerShopHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PeerShopHeaderView.h; path = View/PeerShopHeaderView.h; sourceTree = "<group>"; };
 		3D8C9AF819417A2700B13494 /* PeerShopHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PeerShopHeaderView.m; path = View/PeerShopHeaderView.m; sourceTree = "<group>"; };
+		3DA311C9194268D80041F993 /* BackgroundTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundTVC.h; sourceTree = "<group>"; };
+		3DA311CA194268D80041F993 /* BackgroundTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundTVC.m; sourceTree = "<group>"; };
+		3DA311CC194269930041F993 /* BackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BackgroundView.h; path = View/BackgroundView.h; sourceTree = "<group>"; };
+		3DA311CD194269930041F993 /* BackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BackgroundView.m; path = View/BackgroundView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +193,8 @@
 				3D776E85193555C9007EECC4 /* ItemCreationTVC.m */,
 				3D634FF7193B4009007EFEB1 /* LoginVC.h */,
 				3D634FF8193B4009007EFEB1 /* LoginVC.m */,
+				3DA311C9194268D80041F993 /* BackgroundTVC.h */,
+				3DA311CA194268D80041F993 /* BackgroundTVC.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -210,6 +218,8 @@
 				3D8C9AF51941771D00B13494 /* PeerShopHeaderView.xib */,
 				3D8C9AF719417A2700B13494 /* PeerShopHeaderView.h */,
 				3D8C9AF819417A2700B13494 /* PeerShopHeaderView.m */,
+				3DA311CC194269930041F993 /* BackgroundView.h */,
+				3DA311CD194269930041F993 /* BackgroundView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -318,8 +328,10 @@
 			files = (
 				3D45476919236002007551D2 /* ItemCollectionViewCell.m in Sources */,
 				3D45476C19236961007551D2 /* PeerShopInterface.m in Sources */,
+				3DA311CE194269930041F993 /* BackgroundView.m in Sources */,
 				3D45476319235E59007551D2 /* ItemCollectionViewController.m in Sources */,
 				3D45473C19234CA4007551D2 /* PeerShopAppDelegate.m in Sources */,
+				3DA311CB194268D80041F993 /* BackgroundTVC.m in Sources */,
 				3D5C9BB1193D284E00359CEF /* ItemCollectionViewLayout.m in Sources */,
 				3D45473819234CA4007551D2 /* main.m in Sources */,
 				3D776E86193555C9007EECC4 /* ItemCreationTVC.m in Sources */,
