@@ -27,9 +27,9 @@
     [self.items addObject:item];
     NSIndexPath *path = [NSIndexPath indexPathForRow:index.intValue inSection:0];
     NSArray *paths = [[NSArray alloc] initWithObjects:path, nil];
-    [self.collectionView performBatchUpdates:^{
-        [self.collectionView insertItemsAtIndexPaths:paths];
-    } completion:nil];
+
+    [self.collectionView insertItemsAtIndexPaths:paths];
+
 }
 
 -(void)loadItems:(NSArray *)items
