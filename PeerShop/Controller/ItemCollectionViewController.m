@@ -13,15 +13,32 @@
 
 @interface ItemCollectionViewController ()
 // Image names for thumbnails
-@property (strong, nonatomic) NSArray *items; //NSString
+@property (strong, nonatomic) NSMutableArray *items; // NSDictionary
+@property (strong, nonatomic) NSArray *itemsToLoad; // NSDictionary
 @end
 
 @implementation ItemCollectionViewController
 
--(void)setItems:(NSArray *)items
+-(void) animateAddItem:(id) itemIndex
 {
-    _items = items;
-    [self.collectionView reloadData];
+    NSNumber *index = (NSNumber*) itemIndex;
+    id item = [self.itemsToLoad objectAtIndex:index.intValue];
+    [self.items addObject:item];
+    NSIndexPath *path = [NSIndexPath indexPathForRow:index.intValue inSection:0];
+    NSArray *paths = [[NSArray alloc] initWithObjects:path, nil];
+    [self.collectionView performBatchUpdates:^{
+        [self.collectionView insertItemsAtIndexPaths:paths];
+    } completion:nil];
+}
+
+-(void)loadItems:(NSArray *)items
+{
+    self.items = [[NSMutableArray alloc] init];
+    self.itemsToLoad = items;
+    for (int i =0; i < [items count]; i++){
+        [self performSelector:@selector(animateAddItem:) withObject:[NSNumber numberWithInt:i] afterDelay:0.1 * i];
+    }
+
 }
 
 - (void) viewDidLoad
@@ -46,7 +63,7 @@
 - (IBAction) fetchItems
 {
     [PeerShopInterface downloadItemList:^(NSArray *itemList) {
-        self.items = itemList;
+        [self loadItems: itemList];
     }];
 }
 
@@ -54,7 +71,11 @@
 #pragma mark - DataSource methods
 // REQUIRED: Number of items in section. (Number of thumbnails)
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.items.count;
+    if (self.items) {
+        return self.items.count;
+    } else {
+        return 0;
+    }
 }
 
 // REQUIRED: Set up each cell
@@ -88,5 +109,7 @@
         detailVC.item = self.items[indexPath.row];
     }
 }
+
+
 
 @end

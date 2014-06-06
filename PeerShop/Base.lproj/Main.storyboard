@@ -46,7 +46,7 @@
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.81176470590000005" green="0.90196078430000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ImageCell" rowHeight="57" id="JaG-Bs-bVQ">
                                         <rect key="frame" x="0.0" y="108" width="320" height="57"/>
@@ -67,7 +67,7 @@
                                                 <constraint firstItem="XOn-au-IdF" firstAttribute="leading" secondItem="JOX-3m-HLv" secondAttribute="leading" id="pH2-ct-4C5"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.81176470590000005" green="0.90196078430000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="EwO-r3-Tmw">
                                         <rect key="frame" x="0.0" y="165" width="320" height="44"/>
@@ -90,7 +90,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="ch7-Bt-cei" secondAttribute="bottom" id="iV5-Dr-mE2"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.81176470590000005" green="0.90196078430000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="GeV-c7-HYF">
                                         <rect key="frame" x="0.0" y="209" width="320" height="44"/>
@@ -107,7 +107,7 @@
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.81176470590000005" green="0.90196078430000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="Wjo-kt-Xqu">
                                         <rect key="frame" x="0.0" y="253" width="320" height="100"/>
@@ -131,7 +131,7 @@
                                                 <constraint firstItem="bxO-RT-rBK" firstAttribute="top" secondItem="Ho8-xE-Szi" secondAttribute="top" id="rbe-9g-3Ge"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.81176470590000005" green="0.90196078430000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -168,27 +168,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.81176470590000005" green="0.90196078430000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="bLO-sY-CXs">
-                            <size key="itemSize" width="106" height="106"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
+                        <collectionViewLayout key="collectionViewLayout" id="qDI-I0-3s0" customClass="ItemCollectionViewLayout"/>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItemCell" id="rzS-N4-6zg" customClass="ItemCollectionViewCell">
-                                <rect key="frame" x="0.0" y="0.0" width="106" height="106"/>
+                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="106" height="106"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0s2-bq-FIH">
-                                            <rect key="frame" x="0.0" y="0.0" width="111" height="111"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="161" height="161"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <size key="customSize" width="100" height="100"/>
                                 <connections>
                                     <outlet property="imageView" destination="0s2-bq-FIH" id="Fqw-9x-6cE"/>
                                     <segue destination="dHQ-t2-NrE" kind="push" identifier="Select Item" id="bbe-ly-t0h"/>
@@ -200,8 +196,11 @@
                             <outlet property="delegate" destination="pDV-2C-Drn" id="Sod-ia-Y0A"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="bWX-hR-wIN"/>
+                    <navigationItem key="navigationItem" id="bWX-hR-wIN">
+                        <nil key="title"/>
+                    </navigationItem>
                     <nil key="simulatedTopBarMetrics"/>
+                    <size key="freeformSize" width="320" height="568"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yCO-3D-MWe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -234,7 +233,7 @@
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="cid-ic-9y7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.81176470590000005" green="0.90196078430000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.81176470588235294" green="0.90196078431372551" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection id="XYg-eb-gK2">
                                 <cells>
@@ -257,7 +256,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="SVN-dB-3kX" secondAttribute="trailing" id="rrg-cD-mIX"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.81176470590000005" green="0.90196078430000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DetailCell" textLabel="xHP-IK-5DD" detailTextLabel="RmD-Wd-MmJ" style="IBUITableViewCellStyleValue1" id="dBS-WQ-WcS">
                                         <rect key="frame" x="0.0" y="108" width="320" height="44"/>
@@ -282,7 +281,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.81176470590000005" green="0.90196078430000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DetailCell" rowHeight="70" id="Rl0-z3-edQ">
                                         <rect key="frame" x="0.0" y="152" width="320" height="70"/>
@@ -306,7 +305,7 @@
                                                 <constraint firstItem="94N-Ty-acr" firstAttribute="leading" secondItem="wvQ-ZT-Jst" secondAttribute="leading" constant="20" symbolic="YES" id="gpx-aX-YYD"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.81176470590000005" green="0.90196078430000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="ueK-97-2Mf">
                                         <rect key="frame" x="0.0" y="222" width="320" height="44"/>
@@ -328,7 +327,7 @@
                                                 <constraint firstItem="ftg-bM-HVI" firstAttribute="leading" secondItem="SXU-On-KQh" secondAttribute="leading" constant="15" id="wa8-ue-LAi"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.81176470590000005" green="0.90196078430000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -464,6 +463,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ppC-NA-eTU"/>
+        <segue reference="bbe-ly-t0h"/>
     </inferredMetricsTieBreakers>
 </document>
