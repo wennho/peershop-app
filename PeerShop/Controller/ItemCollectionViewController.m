@@ -4,7 +4,7 @@
 //
 //  Created by Wen Hao on 5/14/14.
 //
-//  Adapted from Alexander Hsu's LittleFighters demo and Paul Hegarty's Shutterbug demo for CS193P
+
 
 #import "ItemCollectionViewController.h"
 #import "ItemCollectionViewCell.h"
@@ -15,50 +15,62 @@
 #import "PeerShopDatabase.h"
 
 @interface ItemCollectionViewController ()
-//@property (strong, nonatomic) NSMutableArray *items; // NSDictionary
-//@property (strong, nonatomic) NSArray *itemsToLoad; // NSDictionary
+@property (strong, nonatomic) NSMutableArray *items; // NSDictionary
+@property (strong, nonatomic) NSMutableArray *itemsToAdd;
+@property (nonatomic) BOOL needsFetch;
 @end
 
 @implementation ItemCollectionViewController
-//
-//-(void) animateAddItem:(id) itemIndex
-//{
-//    NSNumber *index = (NSNumber*) itemIndex;
-//    id item = [self.itemsToLoad objectAtIndex:index.intValue];
-//    [self.items addObject:item];
-//    NSIndexPath *path = [NSIndexPath indexPathForRow:index.intValue inSection:0];
-//    NSArray *paths = [[NSArray alloc] initWithObjects:path, nil];
-//
-//    [self.collectionView insertItemsAtIndexPaths:paths];
-//
-//}
-//
-//-(void)loadItems:(NSArray *)items
-//{
-//    self.items = [[NSMutableArray alloc] init];
-//    self.itemsToLoad = items;
-//    for (int i =0; i < [items count]; i++){
-//        [self performSelector:@selector(animateAddItem:) withObject:[NSNumber numberWithInt:i] afterDelay:0.1 * i];
-//    }
-//
-//}
+
+-(void) animateAddItem:(id) itemIndex
+{
+    NSNumber *index = (NSNumber*) itemIndex;
+    [self.items addObject:self.itemsToAdd[index.intValue]];
+    NSIndexPath *path = [NSIndexPath indexPathForRow:index.intValue inSection:0];
+    NSArray *paths = [[NSArray alloc] initWithObjects:path, nil];
+
+    [self.collectionView insertItemsAtIndexPaths:paths];
+
+}
+
+-(void)loadItems:(NSArray *)items
+{
+    int count = 0;
+    int idx = [self.items count];
+    self.itemsToAdd = [NSMutableArray new];
+    for (Item *item in items) {
+        if (![self.items containsObject:item]) {
+            [self.itemsToAdd addObject:item];
+            [self performSelector:@selector(animateAddItem:) withObject:[NSNumber numberWithInt:idx++] afterDelay:0.1 * count++];
+        }
+    }
+}
+
+
 
 - (void) viewDidLoad
 {
     [super viewDidLoad];
+    self.items = [[NSMutableArray alloc] init];
     UINib *cellNIB = [UINib nibWithNibName:NSStringFromClass([PeerShopHeaderView class]) bundle:nil];
-//    [self.collectionView registerNib:cellNIB forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([PeerShopHeaderView class])];
-    [self fetchItems];
+    [self.collectionView registerNib:cellNIB forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([PeerShopHeaderView class])];
+    self.needsFetch = NO;
+    [self getMOC];
 
 }
-
 
 - (void) viewWillAppear:(BOOL)animated
 {
     [self.navigationController setNavigationBarHidden:YES animated:animated];
-//    self.items = nil;
-//    [self.collectionView reloadData];
-//    [self fetchItems];
+
+    self.managedObjectContext = [PeerShopDatabase sharedDefaultDatabase].managedObjectContext;
+
+    if (self.managedObjectContext){
+        [self fetch];
+    } else {
+        self.needsFetch = YES;
+    }
+
     [super viewWillAppear:animated];
 }
 
@@ -87,52 +99,71 @@
     [super viewWillDisappear:animated];
 }
 
-- (IBAction) fetchItems
-{
-//    [PeerShopInterface downloadItemList:^(NSArray *itemList) {
-//        [self loadItems: itemList];
-//    }];
-    [[PeerShopDatabase sharedDefaultDatabase] fetch];
-}
-
-- (void)setManagedObjectContext:(NSManagedObjectContext *)managedObjectContext
-{
-    _managedObjectContext = managedObjectContext;
-    [self setupFetchedResultsController];
-}
-
-// Subclasses can override this to change behavior
-- (NSArray *) getSortDescriptors
+-(NSArray *) getSortDescriptors
 {
     return @[[NSSortDescriptor sortDescriptorWithKey:@"unique"
                                            ascending:YES
                                             selector:nil]];
 }
 
-
-- (void)setupFetchedResultsController
+- (void) setManagedObjectContext:(NSManagedObjectContext *)managedObjectContext
 {
-    if (self.managedObjectContext) {
-        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Item"];
-        request.predicate = nil;
-        request.sortDescriptors = [self getSortDescriptors];
-
-        self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
-                                                                            managedObjectContext:self.managedObjectContext
-                                                                              sectionNameKeyPath:nil
-                                                                                       cacheName:nil];
-    } else {
-        self.fetchedResultsController = nil;
+    _managedObjectContext = managedObjectContext;
+    if (self.needsFetch) {
+        self.needsFetch = NO;
+        [self fetch];
     }
+}
+
+- (IBAction) getMOC
+{
+    PeerShopDatabase *peerDB = [PeerShopDatabase sharedDefaultDatabase];
+
+
+    if (peerDB.managedObjectContext) {
+        self.managedObjectContext = peerDB.managedObjectContext;
+    } else {
+        id observer = [[NSNotificationCenter defaultCenter] addObserverForName:PeerShopDatabaseAvailable
+                                                                        object:peerDB
+                                                                         queue:[NSOperationQueue mainQueue]
+                                                                    usingBlock:^(NSNotification *note) {
+                                                                        self.managedObjectContext = peerDB.managedObjectContext;
+                                                                        [[NSNotificationCenter defaultCenter] removeObserver:observer];
+                                                                    }];
+    }
+
+
+}
+
+- (void) fetch
+{
+    NSLog(@"in fetch");
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Item"];
+    request.predicate = nil;
+    request.sortDescriptors = [self getSortDescriptors];
+
+
+
+    [[PeerShopDatabase sharedDefaultDatabase] fetchWithCompletionHandler:^(BOOL success) {
+
+        NSArray *items = [self.managedObjectContext executeFetchRequest:request error:nil];
+        [self loadItems:items];
+
+    }];
+
 }
 
 
 #pragma mark - DataSource methods
 
+- (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return [self.items count];
+}
 
 - (Item *) getItem:(NSIndexPath *)index
 {
-    return [self.fetchedResultsController objectAtIndexPath:index];
+    return self.items[index.row];
 }
 
 // REQUIRED: Set up each cell
@@ -150,23 +181,23 @@
 
 
 
-//- (UICollectionReusableView *) collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
-//{
-//    UICollectionReusableView *view = nil;
-//    if (kind == UICollectionElementKindSectionHeader) {
-//        view = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
-//                                                  withReuseIdentifier:NSStringFromClass([PeerShopHeaderView class])
-//                                                         forIndexPath:indexPath];
-//    }
-//
-//    return view;
-//}
+- (UICollectionReusableView *) collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionReusableView *view = nil;
+    if (kind == UICollectionElementKindSectionHeader) {
+        view = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+                                                  withReuseIdentifier:NSStringFromClass([PeerShopHeaderView class])
+                                                         forIndexPath:indexPath];
+    }
 
-//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
-//{
-//    // only the height component is used
-//    return CGSizeMake(50, 35);
-//}
+    return view;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
+{
+    // only the height component is used
+    return CGSizeMake(50, 35);
+}
 
 
 #pragma mark - Navigation

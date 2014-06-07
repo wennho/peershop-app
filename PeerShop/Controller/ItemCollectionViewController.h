@@ -7,8 +7,8 @@
 //  Adapted from Alexander Hsu's LittleFighters demo and Paul Hegarty's Shutterbug demo for CS193P
 
 #import <UIKit/UIKit.h>
-#import "CoreDataCollectionViewController.h"
 
-@interface ItemCollectionViewController : CoreDataCollectionViewController
+
+@interface ItemCollectionViewController : UICollectionViewController
 @property (strong,nonatomic) NSManagedObjectContext *managedObjectContext;
 @end
