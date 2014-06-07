@@ -71,8 +71,8 @@ static BOOL loggedIn = NO;
 
 + (NSString *) baseURLString
 {
-    return @"http://luiwenhao.com";
-    //    return @"http://localhost:8000";
+//    return @"http://luiwenhao.com";
+    return @"http://localhost:8000";
 }
 
 + (NSURL *) URLforItemList
@@ -113,7 +113,7 @@ static BOOL loggedIn = NO;
 
 + (NSString *) getCSRF
 {
-    NSArray *cookies = [NSHTTPCookieStorage sharedHTTPCookieStorage].cookies;
+    NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:[NSURL URLWithString:[self baseURLString]]];
     for (NSHTTPCookie *cookie in cookies) {
         if ([cookie.name isEqualToString:@"csrftoken"]){
             return cookie.value;

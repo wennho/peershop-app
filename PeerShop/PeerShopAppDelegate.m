@@ -19,6 +19,8 @@
     [[UITabBar appearance] setTintColor:highlight];
     [[UIButton appearance] setTitleColor:highlight forState:UIControlStateNormal];
     [[BackgroundView appearance] setBackgroundColor:background];
+    [[UIBarButtonItem appearance] setTintColor:highlight];
+    [[UINavigationBar appearance] setTintColor:highlight];
     return YES;
 }
 							

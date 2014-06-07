@@ -473,7 +473,7 @@
         <image name="camera" width="30" height="30"/>
         <image name="gallery" width="30" height="30"/>
         <image name="listing" width="30" height="30"/>
-        <image name="noImg" width="320" height="56"/>
+        <image name="noImg" width="972" height="350"/>
         <image name="pencil" width="30" height="30"/>
         <image name="settings" width="30" height="30"/>
     </resources>
@@ -483,6 +483,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="bbe-ly-t0h"/>
+        <segue reference="ppC-NA-eTU"/>
     </inferredMetricsTieBreakers>
 </document>

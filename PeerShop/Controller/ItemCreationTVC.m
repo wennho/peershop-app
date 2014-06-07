@@ -24,7 +24,7 @@
 
 #define IMAGE_ROW 1
 #define DESCRIPTION_ROW 4
-#define PLACEHOLDER_COLOR [UIColor colorWithRed:155/255.0f green:176/255.0f blue:201/255.0f alpha:1.0f]
+#define PLACEHOLDER_COLOR [UIColor colorWithRed:0 green:0 blue:0 alpha:0.25]
 
 
 - (void) viewDidLoad {

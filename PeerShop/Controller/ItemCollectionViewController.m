@@ -13,7 +13,6 @@
 #import "PeerShopHeaderView.h"
 
 @interface ItemCollectionViewController ()
-// Image names for thumbnails
 @property (strong, nonatomic) NSMutableArray *items; // NSDictionary
 @property (strong, nonatomic) NSArray *itemsToLoad; // NSDictionary
 @end
@@ -47,13 +46,17 @@
     [super viewDidLoad];
     UINib *cellNIB = [UINib nibWithNibName:NSStringFromClass([PeerShopHeaderView class]) bundle:nil];
     [self.collectionView registerNib:cellNIB forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([PeerShopHeaderView class])];
-    [self fetchItems];
+//    [self fetchItems];
 
 }
+
 
 - (void) viewWillAppear:(BOOL)animated
 {
     [self.navigationController setNavigationBarHidden:YES animated:animated];
+    self.items = nil;
+    [self.collectionView reloadData];
+    [self fetchItems];
     [super viewWillAppear:animated];
 }
 
