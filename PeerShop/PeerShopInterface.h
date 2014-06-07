@@ -10,6 +10,7 @@
 #define ITEM_DESCRIPTION_KEY @"description"
 #define ITEM_PRICE_KEY @"price"
 #define ITEM_USER_KEY @"user"
+#define ITEM_ID @"id"
 
 
 typedef void (^CallbackBlock)(UIImage *img);

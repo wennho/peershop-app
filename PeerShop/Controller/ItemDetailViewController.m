@@ -31,14 +31,14 @@
 
 - (void) setupDetails
 {
-    self.itemTitle.text = [self.item valueForKey:ITEM_TITLE_KEY];
-    self.price.text = [@"$" stringByAppendingString:[self.item valueForKey:ITEM_PRICE_KEY]];
-    self.description.text = [self.item valueForKey:ITEM_DESCRIPTION_KEY];
+    self.itemTitle.text = self.item.title;
+    self.price.text = [@"$" stringByAppendingString:self.item.price];
+    self.description.text = self.item.description;
     if ([self.description.text length] == 0){
         // at least have whitespace in the description so that height calculations work out
         self.description.text = @" ";
     }
-    self.itemOwner.text = [NSString stringWithFormat:@"Posted by %@", self.item[ITEM_USER_KEY]];
+    self.itemOwner.text = [NSString stringWithFormat:@"Posted by %@", self.item.user];
     [self startDownloadingImage];
 }
 
@@ -47,7 +47,7 @@
 
     if (self.item)
     {
-        NSURL *imageURL = [PeerShopInterface itemImageURL:self.item];
+        NSURL *imageURL = [NSURL URLWithString:self.item.imageUrl];
         [PeerShopInterface downloadThumbnail:imageURL
                                    withBlock:^(UIImage *img) {
                                        self.imageView.image = img;

@@ -9,6 +9,7 @@
 #import "ItemCreationTVC.h"
 #import "PeerShopInterface.h"
 #import "ItemDetailViewController.h"
+#import "PeerShopDatabase.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 
 @interface ItemCreationTVC () <UIImagePickerControllerDelegate,UINavigationControllerDelegate, UITextViewDelegate>
@@ -17,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *itemPrice;
 @property (weak, nonatomic) IBOutlet UITextView *itemDescription;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (strong, nonatomic) NSDictionary *uploadedItem;
+@property (strong, nonatomic) Item *uploadedItem;
 @end
 
 @implementation ItemCreationTVC
@@ -87,7 +88,7 @@
       };
 
     [PeerShopInterface uploadItem:itemDict withImage:self.imageView.image withCallback:^(NSArray *itemList) {
-        self.uploadedItem = [itemList firstObject];
+        self.uploadedItem =[Item itemWithDict:[itemList firstObject] inManagedObjectContext:[PeerShopDatabase sharedDefaultDatabase].managedObjectContext] ;
         [self reset];   // reset interface, so user can create a new item when returning from segue
         [self performSegueWithIdentifier:@"itemCreation" sender:self];
     }];

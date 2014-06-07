@@ -31,6 +31,10 @@
 		3D8C9AF919417A2700B13494 /* PeerShopHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8C9AF819417A2700B13494 /* PeerShopHeaderView.m */; };
 		3DA311CB194268D80041F993 /* BackgroundTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA311CA194268D80041F993 /* BackgroundTVC.m */; };
 		3DA311CE194269930041F993 /* BackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA311CD194269930041F993 /* BackgroundView.m */; };
+		3DA311D119429B600041F993 /* CoreDataCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA311D019429B600041F993 /* CoreDataCollectionViewController.m */; };
+		3DA311D619429BB60041F993 /* PeerShop.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3DA311D419429BB60041F993 /* PeerShop.xcdatamodeld */; };
+		3DA311D919429CAE0041F993 /* PeerShopDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA311D819429CAE0041F993 /* PeerShopDatabase.m */; };
+		3DA311DC19429FB30041F993 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA311DB19429FB30041F993 /* Item.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +86,13 @@
 		3DA311CA194268D80041F993 /* BackgroundTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundTVC.m; sourceTree = "<group>"; };
 		3DA311CC194269930041F993 /* BackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BackgroundView.h; path = View/BackgroundView.h; sourceTree = "<group>"; };
 		3DA311CD194269930041F993 /* BackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BackgroundView.m; path = View/BackgroundView.m; sourceTree = "<group>"; };
+		3DA311CF19429B600041F993 /* CoreDataCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataCollectionViewController.h; sourceTree = "<group>"; };
+		3DA311D019429B600041F993 /* CoreDataCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataCollectionViewController.m; sourceTree = "<group>"; };
+		3DA311D519429BB60041F993 /* PeerShop.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PeerShop.xcdatamodel; sourceTree = "<group>"; };
+		3DA311D719429CAE0041F993 /* PeerShopDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PeerShopDatabase.h; path = Controller/PeerShopDatabase.h; sourceTree = "<group>"; };
+		3DA311D819429CAE0041F993 /* PeerShopDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PeerShopDatabase.m; path = Controller/PeerShopDatabase.m; sourceTree = "<group>"; };
+		3DA311DA19429FB30041F993 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Item.h; path = "Core Data/Item.h"; sourceTree = "<group>"; };
+		3DA311DB19429FB30041F993 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Item.m; path = "Core Data/Item.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +152,7 @@
 		3D45473119234CA4007551D2 /* PeerShop */ = {
 			isa = PBXGroup;
 			children = (
+				3DA311D319429B810041F993 /* Core Data */,
 				3D8C9AF4194176F100B13494 /* View */,
 				3D5C9BAE193D281400359CEF /* ItemCollection */,
 				3D45476019235E16007551D2 /* Controller */,
@@ -187,6 +199,7 @@
 		3D45476019235E16007551D2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				3DA311D219429B640041F993 /* CDTVC */,
 				3D45476419235F79007551D2 /* ItemDetailViewController.h */,
 				3D45476519235F79007551D2 /* ItemDetailViewController.m */,
 				3D776E84193555C9007EECC4 /* ItemCreationTVC.h */,
@@ -195,6 +208,8 @@
 				3D634FF8193B4009007EFEB1 /* LoginVC.m */,
 				3DA311C9194268D80041F993 /* BackgroundTVC.h */,
 				3DA311CA194268D80041F993 /* BackgroundTVC.m */,
+				3DA311D719429CAE0041F993 /* PeerShopDatabase.h */,
+				3DA311D819429CAE0041F993 /* PeerShopDatabase.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -222,6 +237,25 @@
 				3DA311CD194269930041F993 /* BackgroundView.m */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		3DA311D219429B640041F993 /* CDTVC */ = {
+			isa = PBXGroup;
+			children = (
+				3DA311CF19429B600041F993 /* CoreDataCollectionViewController.h */,
+				3DA311D019429B600041F993 /* CoreDataCollectionViewController.m */,
+			);
+			name = CDTVC;
+			sourceTree = "<group>";
+		};
+		3DA311D319429B810041F993 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				3DA311D419429BB60041F993 /* PeerShop.xcdatamodeld */,
+				3DA311DA19429FB30041F993 /* Item.h */,
+				3DA311DB19429FB30041F993 /* Item.m */,
+			);
+			name = "Core Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -326,14 +360,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DA311DC19429FB30041F993 /* Item.m in Sources */,
 				3D45476919236002007551D2 /* ItemCollectionViewCell.m in Sources */,
 				3D45476C19236961007551D2 /* PeerShopInterface.m in Sources */,
 				3DA311CE194269930041F993 /* BackgroundView.m in Sources */,
 				3D45476319235E59007551D2 /* ItemCollectionViewController.m in Sources */,
+				3DA311D619429BB60041F993 /* PeerShop.xcdatamodeld in Sources */,
+				3DA311D919429CAE0041F993 /* PeerShopDatabase.m in Sources */,
 				3D45473C19234CA4007551D2 /* PeerShopAppDelegate.m in Sources */,
 				3DA311CB194268D80041F993 /* BackgroundTVC.m in Sources */,
 				3D5C9BB1193D284E00359CEF /* ItemCollectionViewLayout.m in Sources */,
 				3D45473819234CA4007551D2 /* main.m in Sources */,
+				3DA311D119429B600041F993 /* CoreDataCollectionViewController.m in Sources */,
 				3D776E86193555C9007EECC4 /* ItemCreationTVC.m in Sources */,
 				3D8C9AF919417A2700B13494 /* PeerShopHeaderView.m in Sources */,
 				3D634FF9193B4009007EFEB1 /* LoginVC.m in Sources */,
@@ -560,6 +598,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3DA311D419429BB60041F993 /* PeerShop.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3DA311D519429BB60041F993 /* PeerShop.xcdatamodel */,
+			);
+			currentVersion = 3DA311D519429BB60041F993 /* PeerShop.xcdatamodel */;
+			path = PeerShop.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 3D45472019234CA4007551D2 /* Project object */;
 }

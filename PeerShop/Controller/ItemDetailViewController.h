@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "BackgroundTVC.h"
+#import "Item.h"
 
 @interface ItemDetailViewController : BackgroundTVC
-@property (strong, nonatomic) NSDictionary *item;
+@property (strong, nonatomic) Item *item;
 @end

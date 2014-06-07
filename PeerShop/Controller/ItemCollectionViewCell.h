@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Item.h"
 
 @interface ItemCollectionViewCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (strong, nonatomic) NSDictionary *item;
+@property (strong, nonatomic) Item *item;
 @end
