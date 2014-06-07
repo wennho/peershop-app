@@ -1,0 +1,64 @@
+===============================================================================
+CS 193P Final Project: PeerShop
+June 5, 2014
+Wen Hao Lui
+whlui@stanford.edu
+===============================================================================
+
+PeerShop is an application that allows users to easily create for-sale postings
+on their phone and share it on the internet with friends and the community.
+
+We have a simple interface for:
+- Viewing all postings
+- Searching for postings
+- User log in
+- Item creation (requires user to be logged in)
+
+===============================================================================
+
+Documentation of Design Collaboration
+
+1    Background Information
+
+1.1     Project Rationale
+
+As the end of the academic year approaches, graduating students will be seeking
+avenues to sell their belongings in a reliable and efficient way. This
+PeerShop application is a platform that allows students to post items they wish
+to sell, and to also see what their friends are selling based on the contact
+list. Items for sale are uploaded to a web server, so that they can be perused
+online as well.
+
+1.2     Choice of Collaborator
+
+My collaborator, Sabrina Ng, is one such graduating student. As a member of the
+target demographic group, it is hoped that she will bring unique perspectives
+to bear on this project, while offering feedback that is largely reflective of
+the intended consumer population.
+
+
+2     The Design Collaboration Process
+
+The collaborative process was enacted through various media such as phone
+conversations, email, and face-to-face discussions. Several stages were
+involved. First, we talked about the goals of the collaboration and shared what
+we think would make good “Features”, incorporating them into the proposal. This
+was followed by an incubation period, whereby I began developing the prototype
+while Sabrina formulated personal expectations of what the app would look like
+without actually seeing the prototype. Once the prototype was created, we
+reconvened for a more in-depth discussion. The Sabrina test-used the app and
+commented on the aesthetics and user-friendliness of the interface.
+
+
+2.1     Incorporated Feedback
+
+2.2     Future Work
+
+Based on issues that surfaced during the collaborative process, future work on
+the app will entail building in the following functionalities:
+- The capability to group, and compare items by category, price,
+  location and credibility ratings of the seller, etc.
+- Drop-down lists that request specific information (e.g. item condition) from
+  the seller when he/she is creating a new post for an item, as opposed to a
+  simple description box which may lead to omission of important information
+

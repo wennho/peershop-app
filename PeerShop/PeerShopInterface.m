@@ -80,8 +80,7 @@ static BOOL loggedIn = NO;
 
 + (NSString *) baseURLString
 {
-//    return @"http://luiwenhao.com";
-    return @"http://localhost:8000";
+    return @"http://luiwenhao.com";
 }
 
 + (NSURL *) URLforItemList
