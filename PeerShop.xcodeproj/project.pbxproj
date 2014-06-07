@@ -34,6 +34,8 @@
 		3DA311D619429BB60041F993 /* PeerShop.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3DA311D419429BB60041F993 /* PeerShop.xcdatamodeld */; };
 		3DA311D919429CAE0041F993 /* PeerShopDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA311D819429CAE0041F993 /* PeerShopDatabase.m */; };
 		3DA311DC19429FB30041F993 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA311DB19429FB30041F993 /* Item.m */; };
+		3DA311DE1942D67C0041F993 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DA311DD1942D67C0041F993 /* MessageUI.framework */; };
+		3DA311E11942D79C0041F993 /* WhiteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA311E01942D79C0041F993 /* WhiteButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +92,9 @@
 		3DA311D819429CAE0041F993 /* PeerShopDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PeerShopDatabase.m; path = Controller/PeerShopDatabase.m; sourceTree = "<group>"; };
 		3DA311DA19429FB30041F993 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Item.h; path = "Core Data/Item.h"; sourceTree = "<group>"; };
 		3DA311DB19429FB30041F993 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Item.m; path = "Core Data/Item.m"; sourceTree = "<group>"; };
+		3DA311DD1942D67C0041F993 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		3DA311DF1942D79C0041F993 /* WhiteButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WhiteButton.h; path = View/WhiteButton.h; sourceTree = "<group>"; };
+		3DA311E01942D79C0041F993 /* WhiteButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WhiteButton.m; path = View/WhiteButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DA311DE1942D67C0041F993 /* MessageUI.framework in Frameworks */,
 				3D45472E19234CA4007551D2 /* CoreGraphics.framework in Frameworks */,
 				3D45473019234CA4007551D2 /* UIKit.framework in Frameworks */,
 				3D45472C19234CA4007551D2 /* Foundation.framework in Frameworks */,
@@ -138,6 +144,7 @@
 		3D45472A19234CA4007551D2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3DA311DD1942D67C0041F993 /* MessageUI.framework */,
 				3D45472B19234CA4007551D2 /* Foundation.framework */,
 				3D45472D19234CA4007551D2 /* CoreGraphics.framework */,
 				3D45472F19234CA4007551D2 /* UIKit.framework */,
@@ -231,6 +238,8 @@
 				3D8C9AF819417A2700B13494 /* PeerShopHeaderView.m */,
 				3DA311CC194269930041F993 /* BackgroundView.h */,
 				3DA311CD194269930041F993 /* BackgroundView.m */,
+				3DA311DF1942D79C0041F993 /* WhiteButton.h */,
+				3DA311E01942D79C0041F993 /* WhiteButton.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -352,6 +361,7 @@
 				3D45476C19236961007551D2 /* PeerShopInterface.m in Sources */,
 				3DA311CE194269930041F993 /* BackgroundView.m in Sources */,
 				3D45476319235E59007551D2 /* ItemCollectionViewController.m in Sources */,
+				3DA311E11942D79C0041F993 /* WhiteButton.m in Sources */,
 				3DA311D619429BB60041F993 /* PeerShop.xcdatamodeld in Sources */,
 				3DA311D919429CAE0041F993 /* PeerShopDatabase.m in Sources */,
 				3D45473C19234CA4007551D2 /* PeerShopAppDelegate.m in Sources */,

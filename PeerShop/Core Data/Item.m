@@ -17,6 +17,7 @@
 @dynamic price;
 @dynamic imageUrl;
 @dynamic user;
+@dynamic userEmail;
 @dynamic thumbnail;
 @dynamic title;
 
@@ -45,6 +46,7 @@
         item.thumbnail = nil;
         item.thumbnailUrl = [[PeerShopInterface itemThumbnailURL:dict] absoluteString];
         item.imageUrl = [[PeerShopInterface itemImageURL:dict] absoluteString];
+        item.userEmail = [dict valueForKey:ITEM_USER_EMAIL];
 
     } else {
         item = [matches firstObject];

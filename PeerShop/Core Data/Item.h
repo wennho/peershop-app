@@ -18,6 +18,7 @@
 @property (nonatomic, retain) NSString * price;
 @property (nonatomic, retain) NSString * imageUrl;
 @property (nonatomic, retain) NSString * user;
+@property (nonatomic, retain) NSString * userEmail;
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSData * thumbnail;
 

@@ -17,6 +17,9 @@ typedef void (^CompletionBlock)(NSURL *location, NSURLResponse *response, NSErro
 #define USERNAME_KEY @"PeerShopUsername"
 #define PASSWORD_KEY @"PeerShopPassword"
 
+#define GUEST_USERNAME @"guest"
+#define GUEST_PASSWORD @"guest123"
+
 @implementation PeerShopInterface
 
 static NSString *_username;
@@ -37,6 +40,9 @@ static BOOL loggedIn = NO;
     if (!_username) {
         _username = [[NSUserDefaults standardUserDefaults] stringForKey:USERNAME_KEY];
     }
+    if (!_username){
+        _username = GUEST_USERNAME;
+    }
     return _username;
 }
 
@@ -44,6 +50,9 @@ static BOOL loggedIn = NO;
 {
     if (!_password) {
         _password = [[NSUserDefaults standardUserDefaults] stringForKey:PASSWORD_KEY];
+    }
+    if (!_password) {
+        _password = GUEST_PASSWORD;
     }
     return _password;
 }

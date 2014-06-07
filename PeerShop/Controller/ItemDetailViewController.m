@@ -15,7 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *description;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *itemOwner;
-
+@property (nonatomic, strong) MFMailComposeViewController *mailComposer;
 @end
 
 @implementation ItemDetailViewController
@@ -75,4 +75,18 @@
     }
 }
 
+- (IBAction)sendEmail:(id)sender {
+    self.mailComposer = [[MFMailComposeViewController alloc]init];
+    self.mailComposer.mailComposeDelegate = self;
+    [self.mailComposer setSubject:self.item.title];
+    [self.mailComposer setToRecipients:@[self.item.userEmail]];
+    [self presentViewController:self.mailComposer animated:YES completion:nil];
+}
+
+-(void)mailComposeController:(MFMailComposeViewController *)controller
+         didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error{
+
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
 @end

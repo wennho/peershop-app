@@ -8,7 +8,7 @@
 
 #import "PeerShopAppDelegate.h"
 #import "BackgroundView.h"
-
+#import "WhiteButton.h"
 @implementation PeerShopAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -18,6 +18,7 @@
 
     [[UITabBar appearance] setTintColor:highlight];
     [[UIButton appearance] setTitleColor:highlight forState:UIControlStateNormal];
+    [[WhiteButton appearance] setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [[BackgroundView appearance] setBackgroundColor:background];
     [[UIBarButtonItem appearance] setTintColor:highlight];
     [[UINavigationBar appearance] setTintColor:highlight];

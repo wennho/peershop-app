@@ -11,7 +11,7 @@
 #define ITEM_PRICE_KEY @"price"
 #define ITEM_USER_KEY @"user"
 #define ITEM_ID @"id"
-
+#define ITEM_USER_EMAIL @"user_email"
 
 typedef void (^CallbackBlock)(UIImage *img);
 typedef void (^SuccessCallback)(BOOL success);

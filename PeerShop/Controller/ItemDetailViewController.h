@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "BackgroundTVC.h"
 #import "Item.h"
+#import <MessageUI/MessageUI.h>
 
-@interface ItemDetailViewController : BackgroundTVC
+@interface ItemDetailViewController : BackgroundTVC<MFMailComposeViewControllerDelegate>
+
 @property (strong, nonatomic) Item *item;
 @end
