@@ -33,7 +33,7 @@
 {
     self.itemTitle.text = self.item.title;
     self.price.text = [@"$" stringByAppendingString:self.item.price];
-    self.description.text = self.item.description;
+    self.description.text = self.item.itemDescription;
     if ([self.description.text length] == 0){
         // at least have whitespace in the description so that height calculations work out
         self.description.text = @" ";

@@ -26,7 +26,8 @@
 {
     NSNumber *index = (NSNumber*) itemIndex;
     [self.items addObject:self.itemsToAdd[index.intValue]];
-    NSIndexPath *path = [NSIndexPath indexPathForRow:index.intValue inSection:0];
+    int row = [self.items count]-1;
+    NSIndexPath *path = [NSIndexPath indexPathForRow:row inSection:0];
     NSArray *paths = [[NSArray alloc] initWithObjects:path, nil];
 
     [self.collectionView insertItemsAtIndexPaths:paths];
@@ -36,12 +37,12 @@
 -(void)loadItems:(NSArray *)items
 {
     int count = 0;
-    int idx = [self.items count];
     self.itemsToAdd = [NSMutableArray new];
     for (Item *item in items) {
         if (![self.items containsObject:item]) {
             [self.itemsToAdd addObject:item];
-            [self performSelector:@selector(animateAddItem:) withObject:[NSNumber numberWithInt:idx++] afterDelay:0.1 * count++];
+            [self performSelector:@selector(animateAddItem:) withObject:[NSNumber numberWithInt:count] afterDelay:0.1 * count];
+            count++;
         }
     }
 }
@@ -127,7 +128,10 @@
                                                                         object:peerDB
                                                                          queue:[NSOperationQueue mainQueue]
                                                                     usingBlock:^(NSNotification *note) {
+                                                                        dispatch_async(dispatch_get_main_queue(), ^{
                                                                         self.managedObjectContext = peerDB.managedObjectContext;
+                                                                        });
+
                                                                         [[NSNotificationCenter defaultCenter] removeObserver:observer];
                                                                     }];
     }
@@ -137,7 +141,6 @@
 
 - (void) fetch
 {
-    NSLog(@"in fetch");
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Item"];
     request.predicate = nil;
     request.sortDescriptors = [self getSortDescriptors];
