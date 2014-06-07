@@ -11,4 +11,6 @@
 
 @interface ItemCollectionViewController : UICollectionViewController
 @property (strong,nonatomic) NSManagedObjectContext *managedObjectContext;
+- (void) clearItems;
+- (void) fetch;
 @end

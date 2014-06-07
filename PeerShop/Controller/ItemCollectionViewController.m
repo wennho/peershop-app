@@ -22,6 +22,11 @@
 
 @implementation ItemCollectionViewController
 
+- (void) clearItems
+{
+    [self.items removeAllObjects];
+}
+
 -(void) animateAddItem:(id) itemIndex
 {
     NSNumber *index = (NSNumber*) itemIndex;
@@ -47,14 +52,17 @@
     }
 }
 
-
+- (void) registerHeader
+{
+    UINib *cellNIB = [UINib nibWithNibName:NSStringFromClass([PeerShopHeaderView class]) bundle:nil];
+    [self.collectionView registerNib:cellNIB forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([PeerShopHeaderView class])];
+}
 
 - (void) viewDidLoad
 {
     [super viewDidLoad];
     self.items = [[NSMutableArray alloc] init];
-    UINib *cellNIB = [UINib nibWithNibName:NSStringFromClass([PeerShopHeaderView class]) bundle:nil];
-    [self.collectionView registerNib:cellNIB forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([PeerShopHeaderView class])];
+    [self registerHeader];
     self.needsFetch = NO;
     [self getMOC];
 
@@ -139,10 +147,15 @@
 
 }
 
+-(NSPredicate *) getPredicate
+{
+    return nil;
+}
+
 - (void) fetch
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Item"];
-    request.predicate = nil;
+    request.predicate = [self getPredicate];
     request.sortDescriptors = [self getSortDescriptors];
 
 

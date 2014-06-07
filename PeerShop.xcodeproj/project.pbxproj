@@ -36,6 +36,9 @@
 		3DA311DC19429FB30041F993 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA311DB19429FB30041F993 /* Item.m */; };
 		3DA311DE1942D67C0041F993 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DA311DD1942D67C0041F993 /* MessageUI.framework */; };
 		3DA311E11942D79C0041F993 /* WhiteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA311E01942D79C0041F993 /* WhiteButton.m */; };
+		3DA311E31942DDCD0041F993 /* SearchHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DA311E21942DDCD0041F993 /* SearchHeaderView.xib */; };
+		3DA311E61942DE560041F993 /* ItemSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA311E51942DE560041F993 /* ItemSearchViewController.m */; };
+		3DA311E91942DEAF0041F993 /* SearchHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DA311E81942DEAF0041F993 /* SearchHeaderView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +98,11 @@
 		3DA311DD1942D67C0041F993 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		3DA311DF1942D79C0041F993 /* WhiteButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WhiteButton.h; path = View/WhiteButton.h; sourceTree = "<group>"; };
 		3DA311E01942D79C0041F993 /* WhiteButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WhiteButton.m; path = View/WhiteButton.m; sourceTree = "<group>"; };
+		3DA311E21942DDCD0041F993 /* SearchHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchHeaderView.xib; sourceTree = "<group>"; };
+		3DA311E41942DE560041F993 /* ItemSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemSearchViewController.h; path = Controller/ItemSearchViewController.h; sourceTree = "<group>"; };
+		3DA311E51942DE560041F993 /* ItemSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemSearchViewController.m; path = Controller/ItemSearchViewController.m; sourceTree = "<group>"; };
+		3DA311E71942DEAF0041F993 /* SearchHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchHeaderView.h; path = View/SearchHeaderView.h; sourceTree = "<group>"; };
+		3DA311E81942DEAF0041F993 /* SearchHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchHeaderView.m; path = View/SearchHeaderView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +221,8 @@
 				3DA311CA194268D80041F993 /* BackgroundTVC.m */,
 				3DA311D719429CAE0041F993 /* PeerShopDatabase.h */,
 				3DA311D819429CAE0041F993 /* PeerShopDatabase.m */,
+				3DA311E41942DE560041F993 /* ItemSearchViewController.h */,
+				3DA311E51942DE560041F993 /* ItemSearchViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -240,6 +250,9 @@
 				3DA311CD194269930041F993 /* BackgroundView.m */,
 				3DA311DF1942D79C0041F993 /* WhiteButton.h */,
 				3DA311E01942D79C0041F993 /* WhiteButton.m */,
+				3DA311E21942DDCD0041F993 /* SearchHeaderView.xib */,
+				3DA311E71942DEAF0041F993 /* SearchHeaderView.h */,
+				3DA311E81942DEAF0041F993 /* SearchHeaderView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -335,6 +348,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D45474419234CA4007551D2 /* Images.xcassets in Resources */,
+				3DA311E31942DDCD0041F993 /* SearchHeaderView.xib in Resources */,
 				3D8C9AF61941771D00B13494 /* PeerShopHeaderView.xib in Resources */,
 				3D45473619234CA4007551D2 /* InfoPlist.strings in Resources */,
 				3D45473F19234CA4007551D2 /* Main.storyboard in Resources */,
@@ -363,8 +377,10 @@
 				3D45476319235E59007551D2 /* ItemCollectionViewController.m in Sources */,
 				3DA311E11942D79C0041F993 /* WhiteButton.m in Sources */,
 				3DA311D619429BB60041F993 /* PeerShop.xcdatamodeld in Sources */,
+				3DA311E61942DE560041F993 /* ItemSearchViewController.m in Sources */,
 				3DA311D919429CAE0041F993 /* PeerShopDatabase.m in Sources */,
 				3D45473C19234CA4007551D2 /* PeerShopAppDelegate.m in Sources */,
+				3DA311E91942DEAF0041F993 /* SearchHeaderView.m in Sources */,
 				3DA311CB194268D80041F993 /* BackgroundTVC.m in Sources */,
 				3D5C9BB1193D284E00359CEF /* ItemCollectionViewLayout.m in Sources */,
 				3D45473819234CA4007551D2 /* main.m in Sources */,
